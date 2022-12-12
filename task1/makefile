@@ -12,6 +12,7 @@ CDEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
 LD=gcc
 
 SRCDIR := src
+CFLAGS += -I${SRCDIR}
 
 # Парсим директорию и находим все .asm файлы, пишем их в строку через пробел
 C_FILES=$(shell find ${SRCDIR}/ -name '*.c' | xargs echo | sed 's/${SRCDIR}\///g')
@@ -41,6 +42,23 @@ DEP_FILES = $(patsubst %.c, $(DEPDIR)/%.d, $(С_FILES))
 $(DEP_FILES): $(DEPDIR)
 
 include $(wildcard $(DEP_FILES))
+
+TESTDIR := tests
+TESTS_C = $(shell find $(TESTDIR)/ -name '*.c' | xargs echo | sed 's/tests\///g')
+TESTS = $(subst .c,,$(TESTS_C))
+TESTS_OBJ = $(patsubst %.c, $(OBJDIR)/%.o, $(TESTS_C))
+
+$(TESTS): $(TESTS_OBJ) $(OBJ_FILES)
+	$(LD) $(LFLAGS) -nostartfiles --entry=$@ -o $@ $^
+
+$(OBJDIR)/%.o : ${TESTDIR}/%.c | ${DEPDIR} ${OBJDIR}
+	$(CC) $(CDEPFLAGS) $(CFLAGS) -o $@ $<
+	
+$(OBJDIR)/%.o : ${TESTDIR}/%.c $(DEPDIR)/%.d | $(DEPDIR) $(OBJDIR)
+	$(CC) $(CDEPFLAGS) $(CFLAGS) -o $@ $<
+
+test: $(TESTS)
+	@echo $(TESTS) | xargs -n 1 echo | sed 's/^/.\//g' | sh
 
 .PHONY: run
 run:
