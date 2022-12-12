@@ -59,6 +59,7 @@ $(OBJDIR)/%.o : ${TESTDIR}/%.c $(DEPDIR)/%.d | $(DEPDIR) $(OBJDIR)
 
 test: $(TESTS)
 	@echo $(TESTS) | xargs -n 1 echo | sed 's/^/.\//g' | sh
+	@rm -rf $(TESTS)
 
 .PHONY: run
 run:
@@ -69,3 +70,4 @@ clean:
 	rm -rf $(PROG_NAME)
 	rm -rf $(DEPDIR)
 	rm -rf $(OBJDIR)
+	rm -rf $(TESTS)
