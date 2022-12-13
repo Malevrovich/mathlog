@@ -48,8 +48,11 @@ TESTS_C = $(shell find $(TESTDIR)/ -name '*.c' | xargs echo | sed 's/tests\///g'
 TESTS = $(subst .c,,$(TESTS_C))
 TESTS_OBJ = $(patsubst %.c, $(OBJDIR)/%.o, $(TESTS_C))
 
-$(TESTS): $(TESTS_OBJ) $(OBJ_FILES)
-	$(LD) $(LFLAGS) -nostartfiles --entry=$@ -o $@ $^
+.SILENT:$(TESTS)
+$(TESTS): % : $(OBJDIR)/%.o $(filter-out $(OBJDIR)/main.o, $(OBJ_FILES))
+	$(LD) $(LFLAGS) -o $@ $^
+	@echo "\nRunning file $@"
+	@./$@
 
 $(OBJDIR)/%.o : ${TESTDIR}/%.c | ${DEPDIR} ${OBJDIR}
 	$(CC) $(CDEPFLAGS) $(CFLAGS) -o $@ $<
@@ -57,8 +60,8 @@ $(OBJDIR)/%.o : ${TESTDIR}/%.c | ${DEPDIR} ${OBJDIR}
 $(OBJDIR)/%.o : ${TESTDIR}/%.c $(DEPDIR)/%.d | $(DEPDIR) $(OBJDIR)
 	$(CC) $(CDEPFLAGS) $(CFLAGS) -o $@ $<
 
+
 test: $(TESTS)
-	@echo $(TESTS) | xargs -n 1 echo | sed 's/^/.\//g' | sh
 	@rm -rf $(TESTS)
 
 .PHONY: run
@@ -67,7 +70,7 @@ run:
 
 .PHONY: clean
 clean:
-	rm -rf $(PROG_NAME)
-	rm -rf $(DEPDIR)
-	rm -rf $(OBJDIR)
-	rm -rf $(TESTS)
+	@rm -rf $(PROG_NAME)
+	@rm -rf $(DEPDIR)
+	@rm -rf $(OBJDIR)
+	@rm -rf $(TESTS)
