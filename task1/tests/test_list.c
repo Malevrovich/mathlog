@@ -4,8 +4,8 @@
 #include <assert.h>
 #include <stdlib.h>
 
-DEFINE_LIST(int, int)
 DECLARE_LIST(int, int)
+DEFINE_LIST(int, int)
 
 #define INIT_LIST(name) (struct list_##name **) malloc(sizeof(struct list_##name *))
 
