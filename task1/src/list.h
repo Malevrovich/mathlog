@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef _DOUBLE_LINKED_LIST_H_
 #define _DOUBLE_LINKED_LIST_H_
 

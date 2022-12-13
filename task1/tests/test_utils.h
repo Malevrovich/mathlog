@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef _TEST_UTILS_H_
 #define _TEST_UTILS_H_
 
@@ -9,9 +11,9 @@
 #define RUN_TEST(name)                      \
 do {                                        \
     printf("------------------------\n");   \
-    printf("Running test " #name "...\n");     \
+    printf("Running test " #name "...\n");  \
     test_##name();                          \
-    printf("Success!\n");                    \
+    printf("Success!\n");                   \
     printf("------------------------\n");   \
 } while(0)
 
