@@ -14,6 +14,7 @@ struct list_##name {                            \
 };
 
 #define DEFINE_LIST(name, type)                                                     \
+__attribute__((unused))                                                             \
 static struct list_##name *list_##name##_create(type value) {                       \
     struct list_##name *res =                                                       \
          (struct list_##name *) malloc(sizeof(struct list_##name));                 \
@@ -23,6 +24,7 @@ static struct list_##name *list_##name##_create(type value) {                   
     return res;                                                                     \
 }                                                                                   \
                                                                                     \
+__attribute__((unused))                                                             \
 static void list_##name##_push_back(struct list_##name **list, type value) {        \
     if(!list) return;                                                               \
     struct list_##name *el = list_##name##_create(value);                           \
@@ -40,12 +42,14 @@ static void list_##name##_push_back(struct list_##name **list, type value) {    
     el->prev = last;                                                                \
 }                                                                                   \
                                                                                     \
+__attribute__((unused))                                                             \
 static void list_##name##_push_front(struct list_##name **list, type value){        \
     if(!list) return;                                                               \
     list_##name##_push_back(list, value);                                           \
     *list = (*list)->prev;                                                          \
 }                                                                                   \
                                                                                     \
+__attribute__((unused))                                                             \
 static type list_##name##_pop_back(struct list_##name **list){                      \
     struct list_##name *head = *list;                                               \
     struct list_##name *last = head->prev;                                          \
@@ -65,23 +69,28 @@ static type list_##name##_pop_back(struct list_##name **list){                  
     return res;                                                                     \
 }                                                                                   \
                                                                                     \
+__attribute__((unused))                                                             \
 static type list_##name##_pop_front(struct list_##name **list) {                    \
     *list = (*list)->next;                                                          \
     return list_##name##_pop_back(list);                                            \
 }                                                                                   \
                                                                                     \
+__attribute__((unused))                                                             \
 static type list_##name##_front(struct list_##name **list) {                        \
     return (*list)->val;                                                            \
 }                                                                                   \
                                                                                     \
+__attribute__((unused))                                                             \
 static type list_##name##_back(struct list_##name **list) {                         \
     return (*list)->prev->val;                                                      \
 }                                                                                   \
                                                                                     \
+__attribute__((unused))                                                             \
 static bool list_##name##_empty(struct list_##name **list) {                        \
     return (list) && !(*list);                                                      \
 }                                                                                   \
                                                                                     \
+__attribute__((unused))                                                             \
 static size_t list_##name##_size(struct list_##name **list) {                       \
     if(!list) return 0;                                                             \
                                                                                     \
@@ -97,6 +106,7 @@ static size_t list_##name##_size(struct list_##name **list) {                   
     return sz;                                                                      \
 }                                                                                   \
                                                                                     \
+__attribute__((unused))                                                             \
 static void list_##name##_free(struct list_##name **list) {                         \
     if(!list) return;                                                               \
                                                                                     \
