@@ -4,6 +4,8 @@
 #include <assert.h>
 #include <stdlib.h>
 
+#define DISABLED
+
 DECLARE_LIST(int, int)
 DEFINE_LIST(int, int)
 
@@ -186,6 +188,7 @@ TEST(size) {
 }
 
 int main() {
+    #ifndef DISABLED
     RUN_TEST(free);
     RUN_TEST(create);
     RUN_TEST(push_back);
@@ -196,5 +199,8 @@ int main() {
     RUN_TEST(pop_back);
     RUN_TEST(empty);
     RUN_TEST(size);
+    #else
+    printf("TEST DISABLED\n");
+    #endif
     return 0;
 }
