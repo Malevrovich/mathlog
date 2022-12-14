@@ -5,7 +5,6 @@ CC = gcc
 
 # Папка в которой будут храниться .d файлы - файлы зависимостей.
 # Они генерируются непосредственно компилятором при помощи флагов -M...
-# P.S. gcc так же поддерживает эти флаги
 DEPDIR := .deps
 CDEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
 
@@ -48,19 +47,20 @@ TESTS_C = $(shell find $(TESTDIR)/ -name '*.c' | xargs echo | sed 's/tests\///g'
 TESTS = $(subst .c,,$(TESTS_C))
 TESTS_OBJ = $(patsubst %.c, $(OBJDIR)/%.o, $(TESTS_C))
 
-.SILENT:$(TESTS)
+# Запускаем каждый тестовый файл отдельно, линкуем его со всем кроме main.o
+.SILENT:$(TESTS : %)
 $(TESTS): % : $(OBJDIR)/%.o $(filter-out $(OBJDIR)/main.o, $(OBJ_FILES))
 	$(LD) $(LFLAGS) -o $@ $^
 	@echo "\nRunning file $@"
 	@./$@
-
+	
 $(OBJDIR)/%.o : ${TESTDIR}/%.c | ${DEPDIR} ${OBJDIR}
 	$(CC) $(CDEPFLAGS) $(CFLAGS) -o $@ $<
 	
 $(OBJDIR)/%.o : ${TESTDIR}/%.c $(DEPDIR)/%.d | $(DEPDIR) $(OBJDIR)
 	$(CC) $(CDEPFLAGS) $(CFLAGS) -o $@ $<
 
-
+# Создаем тестовые бинарники, запускаем и удаляем.
 test: $(TESTS)
 	@rm -rf $(TESTS)
 
