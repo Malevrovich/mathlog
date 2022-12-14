@@ -118,6 +118,25 @@ static void list_##name##_free(struct list_##name **list) {                     
         cur = cur->next;                                                            \
         free(tmp);                                                                  \
     }                                                                               \
-}                                                                          
+}                                                                                   \
+                                                                                    \
+__attribute__((unused))                                                             \
+static void list_##name##_map(struct list_##name **list, void fun(type *)){         \
+    if(!list) return;                                                               \
+                                                                                    \
+    struct list_##name *head = *list;                                               \
+    struct list_##name *cur = head;                                                 \
+    while(cur && cur->next != head) {                                               \
+        fun(&cur->val);                                                             \
+        cur = cur->next;                                                            \
+    }                                                                               \
+    fun(&cur->val);                                                                 \
+}
+
+#define DEFINE_LIST_DEBUG(name, type)                                                            \
+typedef void (name##_element_printer) (type *);                                                  \
+static void list_##name##_print(struct list_##name **list, name##_element_printer p){            \
+    list_##name##_map(list, p);                                                                  \
+}
 
 #endif /* _DOUBLE_LINKED_LIST_H_ */

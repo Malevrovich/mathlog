@@ -187,6 +187,26 @@ TEST(size) {
     assert(list_int_size(&list) == 1);
 }
 
+void square(int *el) {
+    *el = *el * *el;
+}
+
+TEST(map) {
+    struct list_int *list = list_int_create(0);
+    list_int_push_back(&list, 1);
+    list_int_push_back(&list, 2);
+    list_int_push_back(&list, 3);
+    list_int_push_back(&list, 4);
+
+    list_int_map(&list, &square);
+
+    assert(list_int_pop_front(&list) == 0);
+    assert(list_int_pop_front(&list) == 1);
+    assert(list_int_pop_front(&list) == 4);
+    assert(list_int_pop_front(&list) == 9);
+    assert(list_int_pop_front(&list) == 16);
+}
+
 int main() {
     #ifndef DISABLED
     RUN_TEST(free);
@@ -199,6 +219,7 @@ int main() {
     RUN_TEST(pop_back);
     RUN_TEST(empty);
     RUN_TEST(size);
+    RUN_TEST(map);
     #else
     printf("TEST DISABLED\n");
     #endif
