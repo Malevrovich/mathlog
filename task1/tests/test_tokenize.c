@@ -6,6 +6,8 @@
 #include <assert.h>
 #include <string.h>
 
+// #define DISABLED
+
 DEFINE_LIST(token, struct token)
 
 static inline void check_token(struct token expected, struct token real) {

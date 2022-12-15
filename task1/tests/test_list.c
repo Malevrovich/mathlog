@@ -4,7 +4,7 @@
 #include <assert.h>
 #include <stdlib.h>
 
-#define DISABLED
+// #define DISABLED
 
 DECLARE_LIST(int, int)
 DEFINE_LIST(int, int)
@@ -207,6 +207,55 @@ TEST(map) {
     assert(list_int_pop_front(&list) == 16);
 }
 
+TEST(insert_after) {
+    struct list_int *list = list_int_create(0);
+    list_int_push_back(&list, 1);
+    list_int_push_back(&list, 3);
+
+    list_int_insert_after(list->next, 2);
+
+    assert(list_int_pop_front(&list) == 0);
+    assert(list_int_pop_front(&list) == 1);
+    assert(list_int_pop_front(&list) == 2);
+    assert(list_int_pop_front(&list) == 3);
+    assert(list_int_empty(&list));
+
+    list_int_push_back(&list, 1);
+    list_int_insert_after(list, 2);
+
+    assert(list->next->next == list);
+    assert(list->prev->prev == list);
+    
+    assert(list_int_pop_front(&list) == 1);
+    assert(list_int_pop_front(&list) == 2);
+}
+
+TEST(remove) {
+    struct list_int **list = INIT_LIST(int);
+    list_int_push_back(list, 1);
+    list_int_push_back(list, 2);
+    list_int_push_back(list, 3);
+    list_int_push_back(list, 4);
+
+    list_int_remove(list, (*list)->next);
+    assert((*list)->next->val == 3);
+    assert((*list)->next->prev == (*list));
+    
+    list_int_remove(list, (*list)->prev);
+    assert((*list)->prev->val == 3);
+    assert((*list)->prev->next == (*list));
+    assert((*list)->next->val == 3);
+    assert((*list)->next->prev == (*list));
+
+    list_int_remove(list, *list);
+    assert((*list)->val == 3);
+    assert((*list)->next == *list);
+    assert((*list)->prev == *list);
+
+    list_int_remove(list, *list);
+    assert(list_int_empty(list));
+}
+
 int main() {
     #ifndef DISABLED
     RUN_TEST(free);
@@ -220,6 +269,8 @@ int main() {
     RUN_TEST(empty);
     RUN_TEST(size);
     RUN_TEST(map);
+    RUN_TEST(insert_after);
+    RUN_TEST(remove);
     #else
     printf("TEST DISABLED\n");
     #endif
