@@ -21,7 +21,7 @@ const char *TOKEN_STRING[] = {
 void token_print(struct token *token) {
     printf("| %s ", TOKEN_STRING[token->type]);
     if(token->type == TOKEN_VARIABLE) printf(" %s ", token->value);
-    printf("| --->");
+    printf("| ---> ");
 }
 
 void print_token_list(struct list_token **list) {

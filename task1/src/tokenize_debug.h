@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef _TOKENIZE_DEBUG_H_
 #define _TOKENIZE_DEBUG_H_
 
