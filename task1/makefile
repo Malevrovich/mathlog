@@ -31,16 +31,16 @@ $(PROG_NAME) : $(OBJ_FILES)
 
 $(OBJDIR)/%.o : ${SRCDIR}/%.c | ${DEPDIR} ${OBJDIR}
 	$(CC) $(CDEPFLAGS) $(CFLAGS) -o $@ $<
+	$(POSTCOMPILE)
 	
 $(OBJDIR)/%.o : ${SRCDIR}/%.c $(DEPDIR)/%.d | $(DEPDIR) $(OBJDIR)
 	$(CC) $(CDEPFLAGS) $(CFLAGS) -o $@ $<
+	$(POSTCOMPILE)
 
 $(DEPDIR) $(OBJDIR) : ; @mkdir -p $@
 
 DEP_FILES = $(patsubst %.c, $(DEPDIR)/%.d, $(С_FILES))
 $(DEP_FILES): $(DEPDIR)
-
-include $(wildcard $(DEP_FILES))
 
 TESTDIR := tests
 TESTS_C = $(shell find $(TESTDIR)/ -name '*.c' | xargs echo | sed 's/tests\///g')
@@ -56,9 +56,11 @@ $(TESTS): % : $(OBJDIR)/%.o $(filter-out $(OBJDIR)/main.o, $(OBJ_FILES))
 	
 $(OBJDIR)/%.o : ${TESTDIR}/%.c | ${DEPDIR} ${OBJDIR}
 	$(CC) $(CDEPFLAGS) $(CFLAGS) -o $@ $<
+	$(POSTCOMPILE)
 	
 $(OBJDIR)/%.o : ${TESTDIR}/%.c $(DEPDIR)/%.d | $(DEPDIR) $(OBJDIR)
 	$(CC) $(CDEPFLAGS) $(CFLAGS) -o $@ $<
+	$(POSTCOMPILE)
 
 # Создаем тестовые бинарники, запускаем и удаляем.
 test: $(TESTS)
@@ -74,3 +76,5 @@ clean:
 	@rm -rf $(DEPDIR)
 	@rm -rf $(OBJDIR)
 	@rm -rf $(TESTS)
+
+include $(wildcard $(DEPDIR)/*.d)
