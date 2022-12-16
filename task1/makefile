@@ -11,7 +11,7 @@ CDEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
 LD=gcc
 
 SRCDIR := src
-CFLAGS += -I${SRCDIR}
+CFLAGS += $(shell find ${SRCDIR} -type d | sed 's/^/-I/g')
 
 # Парсим директорию и находим все .asm файлы, пишем их в строку через пробел
 C_FILES=$(shell find ${SRCDIR}/ -name '*.c' | xargs echo | sed 's/${SRCDIR}\///g')
@@ -37,7 +37,7 @@ $(OBJDIR)/%.o : ${SRCDIR}/%.c $(DEPDIR)/%.d | $(DEPDIR) $(OBJDIR)
 	$(CC) $(CDEPFLAGS) $(CFLAGS) -o $@ $<
 	$(POSTCOMPILE)
 
-$(DEPDIR) $(OBJDIR) : ; @mkdir -p $@
+$(DEPDIR) $(OBJDIR) : ; @mkdir -p $(shell find $(SRCDIR)/ -type d | sed 's/$(SRCDIR)/$@/g')
 
 DEP_FILES = $(patsubst %.c, $(DEPDIR)/%.d, $(С_FILES))
 $(DEP_FILES): $(DEPDIR)
