@@ -47,6 +47,7 @@ TEST(create) {
 
 TEST(push_back) {
     struct list_int **list = INIT_LIST(int);
+    *list = NULL;
     
     list_int_push_back(list, 0);
     
@@ -73,10 +74,13 @@ TEST(push_back) {
 
     assert((*list)->next->next->next == (*list));
     assert((*list)->prev->prev->prev == (*list));
+
+    free(list);
 }
 
 TEST(push_front) {
     struct list_int **list = INIT_LIST(int);
+    *list = NULL;
     
     list_int_push_front(list, 0);
 
@@ -114,6 +118,8 @@ TEST(push_front) {
     assert((*list)->prev->prev != NULL);
     assert((*list)->prev->prev->val == -1);
     assert((*list)->prev->prev->prev == (*list));
+
+    free(list);
 }
 
 TEST(front) {
@@ -232,6 +238,8 @@ TEST(insert_after) {
 
 TEST(remove) {
     struct list_int **list = INIT_LIST(int);
+    *list = NULL; 
+
     list_int_push_back(list, 1);
     list_int_push_back(list, 2);
     list_int_push_back(list, 3);
@@ -254,6 +262,70 @@ TEST(remove) {
 
     list_int_remove(list, *list);
     assert(list_int_empty(list));
+
+    free(list);
+}
+
+void free_int(int *a){}
+
+DECLARE_LIST(string, char *)
+DEFINE_LIST(string, char *)
+
+TEST(deep_free_simple) {
+    struct list_int **list = INIT_LIST(int);
+    *list = NULL;
+
+    list_int_push_back(list, 1);
+    list_int_push_back(list, 2);
+
+    list_int_deep_free(list, free_int);
+
+    assert(list_int_empty(list));
+    free(list);
+}
+
+void free_string(char **str) {
+    if(!(*str)) return;
+    free(*str);
+    *str = NULL;
+} 
+
+TEST(deep_free_pointer) {
+    struct list_string **list = INIT_LIST(string);
+    *list = NULL;
+
+    char *first = (char *) malloc(sizeof(char) * 6);
+    strcpy(first, "first");
+
+    char *second = (char *) malloc(sizeof(char) * 7);
+    strcpy(second, "second");
+
+    list_string_push_back(list, first);
+    list_string_push_back(list, second);
+
+    assert(strcmp(list_string_back(list), "second") == 0);
+
+    list_string_deep_free(list, free_string);
+    assert(list_string_empty(list));
+
+    free(list);
+}
+
+TEST(head) {
+    struct list_int *list = list_int_create(0);
+    list_int_push_back(&list, 1);
+    list_int_push_front(&list, -1);
+
+    assert(list_int_head(&list)->val == -1);
+    assert(list_int_last(&list)->val == 1);
+    assert(list_int_head(&list)->next->val == 0);
+
+    list_int_pop_front(&list);
+    list_int_pop_back(&list);
+
+    assert(list_int_head(&list)->val == 0);
+    assert(list_int_last(&list)->val == 0);
+    assert(list_int_head(&list) == list_int_last(&list));
 }
 
 int main() {
@@ -271,6 +343,8 @@ int main() {
     RUN_TEST(map);
     RUN_TEST(insert_after);
     RUN_TEST(remove);
+    RUN_TEST(deep_free_simple);
+    RUN_TEST(deep_free_pointer);
     #else
     printf("TEST DISABLED\n");
     #endif

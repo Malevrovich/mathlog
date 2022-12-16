@@ -13,7 +13,52 @@ struct list_##name {                            \
     struct list_##name *prev;                   \
 };
 
+#define DEFINE_READ_LIST(name, type)                                                    \
+__attribute__((unused))                                                                 \
+static inline type list_##name##_front(struct list_##name **list) {                     \
+    return (*list)->val;                                                                \
+}                                                                                       \
+                                                                                        \
+__attribute__((unused))                                                                 \
+static inline type list_##name##_back(struct list_##name **list) {                      \
+    return (*list)->prev->val;                                                          \
+}                                                                                       \
+                                                                                        \
+__attribute__((unused))                                                                 \
+static inline bool list_##name##_empty(struct list_##name **list) {                     \
+    return (list) && !(*list);                                                          \
+}                                                                                       \
+                                                                                        \
+__attribute__((unused))                                                                 \
+static size_t list_##name##_size(struct list_##name **list) {                           \
+    if(!list) return 0;                                                                 \
+                                                                                        \
+    struct list_##name *head = *list;                                                   \
+                                                                                        \
+    struct list_##name *cur = head;                                                     \
+                                                                                        \
+    if(!cur) return 0;                                                                  \
+                                                                                        \
+    size_t sz = 1;                                                                      \
+    while(cur && cur->next != head) { cur = cur->next; sz++; }                          \
+                                                                                        \
+    return sz;                                                                          \
+}                                                                                       \
+                                                                                        \
+__attribute__((unused))                                                                 \
+static inline struct list_##name *list_##name##_head(struct list_##name **list) {       \
+    return *list;                                                                       \
+}                                                                                       \
+                                                                                        \
+__attribute__((unused))                                                                 \
+static inline struct list_##name *list_##name##_last(struct list_##name **list) {       \
+    return (*list)->prev;                                                               \
+}
+
+
+
 #define DEFINE_LIST(name, type)                                                         \
+DEFINE_READ_LIST(name, type)                                                            \
 __attribute__((unused))                                                                 \
 static struct list_##name *list_##name##_create(type value) {                           \
     struct list_##name *res =                                                           \
@@ -75,36 +120,6 @@ static type list_##name##_pop_front(struct list_##name **list) {                
     return list_##name##_pop_back(list);                                                \
 }                                                                                       \
                                                                                         \
-__attribute__((unused))                                                                 \
-static type list_##name##_front(struct list_##name **list) {                            \
-    return (*list)->val;                                                                \
-}                                                                                       \
-                                                                                        \
-__attribute__((unused))                                                                 \
-static type list_##name##_back(struct list_##name **list) {                             \
-    return (*list)->prev->val;                                                          \
-}                                                                                       \
-                                                                                        \
-__attribute__((unused))                                                                 \
-static bool list_##name##_empty(struct list_##name **list) {                            \
-    return (list) && !(*list);                                                          \
-}                                                                                       \
-                                                                                        \
-__attribute__((unused))                                                                 \
-static size_t list_##name##_size(struct list_##name **list) {                           \
-    if(!list) return 0;                                                                 \
-                                                                                        \
-    struct list_##name *head = *list;                                                   \
-                                                                                        \
-    struct list_##name *cur = head;                                                     \
-                                                                                        \
-    if(!cur) return 0;                                                                  \
-                                                                                        \
-    size_t sz = 1;                                                                      \
-    while(cur && cur->next != head) { cur = cur->next; sz++; }                          \
-                                                                                        \
-    return sz;                                                                          \
-}                                                                                       \
                                                                                         \
 __attribute__((unused))                                                                 \
 static void list_##name##_free(struct list_##name **list) {                             \
@@ -118,6 +133,7 @@ static void list_##name##_free(struct list_##name **list) {                     
         cur = cur->next;                                                                \
         free(tmp);                                                                      \
     }                                                                                   \
+    *list = NULL;                                                                       \
 }                                                                                       \
                                                                                         \
 __attribute__((unused))                                                                 \
@@ -127,10 +143,10 @@ static void list_##name##_map(struct list_##name **list, void fun(type *)){     
     struct list_##name *head = *list;                                                   \
     struct list_##name *cur = head;                                                     \
     while(cur && cur->next != head) {                                                   \
-        fun(&cur->val);                                                                 \
+        fun(&(cur->val));                                                               \
         cur = cur->next;                                                                \
     }                                                                                   \
-    fun(&cur->val);                                                                     \
+    fun(&(cur->val));                                                                   \
 }                                                                                       \
                                                                                         \
 __attribute__((unused))                                                                 \
@@ -161,7 +177,15 @@ static void list_##name##_remove(struct list_##name **list, struct list_##name *
     next->prev = prev;                                                                  \
                                                                                         \
     free(el);                                                                           \
-}                                                                                    
+}                                                                                       \
+                                                                                        \
+__attribute__((unused))                                                                 \
+static void list_##name##_deep_free(struct list_##name **list,                          \
+                                         void free_element(type *)){                    \
+    list_##name##_map(list, free_element);                                              \
+    list_##name##_free(list);                                                           \
+    *list = NULL;                                                                       \
+}                                                                                       
 
 
 #define DEFINE_LIST_DEBUG(name, type)                                                            \
