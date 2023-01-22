@@ -36,7 +36,7 @@ static inline bool is_whitespace(char c) {
 }
 
 static inline struct token try_parse_variable(const char ** restrict const str) {
-    if(!str || !(*str)) return (struct token) { TOKEN_ERROR, "NULL pointer!" };
+    if(!str || !(*str)) return (struct token) { TOKEN_ERROR, "NULL pointer" };
 
     if(**str < 'A' && **str > 'Z') {
         return (struct token) { TOKEN_ERROR, "Expected variable" };
@@ -50,7 +50,7 @@ static inline struct token try_parse_variable(const char ** restrict const str) 
     struct token res;
     
     res.type = TOKEN_VARIABLE;
-    res.value = (char *) malloc (sizeof(char) * (pos - *str));
+    res.value = (char *) calloc (sizeof(char),  (pos - *str));
     
     strncpy(res.value, *str, pos - *str);
     *str = pos;
@@ -72,8 +72,6 @@ static struct token parse_token(const char ** restrict const str) {
     if(possible_literal.type != TOKEN_ERROR) return possible_literal;
 
     struct token possible_var = try_parse_variable(str);
-    
-    if(possible_literal.type == TOKEN_ERROR) possible_literal.value = "Couldn't recognize token";
 
     return possible_var;
 }
@@ -82,7 +80,8 @@ struct list_token **tokenize(const char * const str) {
     if(!str) return NULL;
 
     struct list_token **res = (struct list_token **) malloc(sizeof(struct list_token *));
-
+    *res = NULL;
+    
     const char *pos = str;
     struct token cur = parse_token(&pos);
     while(cur.type != TOKEN_END && cur.type != TOKEN_ERROR) {
