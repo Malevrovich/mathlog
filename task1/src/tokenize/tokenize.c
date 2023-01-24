@@ -50,7 +50,7 @@ static inline struct token try_parse_variable(const char ** restrict const str) 
     struct token res;
     
     res.type = TOKEN_VARIABLE;
-    res.value = (char *) calloc (sizeof(char),  (pos - *str));
+    res.value = (char *) calloc (sizeof(char),  (pos - *str + 1));
     
     strncpy(res.value, *str, pos - *str);
     *str = pos;
