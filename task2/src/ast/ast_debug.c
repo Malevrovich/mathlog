@@ -25,7 +25,7 @@ void print_ast(FILE *out, struct AST* node) {
     } else if(node->type == AST_NONE) {
         fprintf(out, "(\nNONE\n)");
     } else if(node->type == AST_LITERAL) {
-        fprintf(out, "%s", node->as_lit.value);
+        fprintf(out, "(%s,%zu)", node->as_lit.value, node->as_lit.idx);
     } else if(node->type == AST_BINARY) {
         fprintf(out, "(%s,", BIN_OP_STRING[node->as_bin.type]);
         print_ast(out, node->as_bin.lhs);
