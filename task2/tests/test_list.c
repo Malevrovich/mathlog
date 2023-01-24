@@ -131,6 +131,8 @@ TEST(front) {
 
     list_int_push_back(&list, 2);
     assert(list_int_front(&list) == 1);
+
+    list_int_free(&list);
 }
 
 TEST(back) {
@@ -142,6 +144,8 @@ TEST(back) {
 
     list_int_push_back(&list, 2);
     assert(list_int_back(&list) == 2);
+
+    list_int_free(&list);
 }
 
 TEST(pop_front) {
@@ -151,6 +155,8 @@ TEST(pop_front) {
     assert(list_int_pop_front(&list) == 0);
     assert(list_int_pop_front(&list) == 1);
     assert(list_int_pop_front(&list) == 2);
+
+    list_int_free(&list);
 }
 
 TEST(pop_back) {
@@ -160,6 +166,8 @@ TEST(pop_back) {
     assert(list_int_pop_back(&list) == 2);
     assert(list_int_pop_back(&list) == 1);
     assert(list_int_pop_back(&list) == 0);
+
+    list_int_free(&list);
 }
 
 TEST(empty) {
@@ -174,6 +182,8 @@ TEST(empty) {
 
     list_int_pop_back(&list);
     assert(list_int_empty(&list));
+
+    list_int_free(&list);
 }
 
 TEST(size) {
@@ -191,6 +201,8 @@ TEST(size) {
 
     list_int_pop_back(&list);
     assert(list_int_size(&list) == 1);
+    
+    list_int_free(&list);
 }
 
 void square(int *el) {
@@ -211,6 +223,8 @@ TEST(map) {
     assert(list_int_pop_front(&list) == 4);
     assert(list_int_pop_front(&list) == 9);
     assert(list_int_pop_front(&list) == 16);
+
+    list_int_free(&list);
 }
 
 TEST(insert_after) {
@@ -234,6 +248,8 @@ TEST(insert_after) {
     
     assert(list_int_pop_front(&list) == 1);
     assert(list_int_pop_front(&list) == 2);
+
+    list_int_free(&list);
 }
 
 TEST(remove) {
@@ -326,6 +342,25 @@ TEST(head) {
     assert(list_int_head(&list)->val == 0);
     assert(list_int_last(&list)->val == 0);
     assert(list_int_head(&list) == list_int_last(&list));
+
+    list_int_free(&list);
+}
+
+bool eq_int(int lhs, int rhs) { return (lhs == rhs); }
+
+TEST(indexof) {
+    struct list_int *list = list_int_create(0);
+    list_int_push_back(&list, 1);
+    list_int_push_back(&list, 2);
+    list_int_push_back(&list, 3);
+    list_int_push_back(&list, 4);
+    list_int_push_back(&list, 5);
+    
+    for(size_t i = 0; i < 6; i++) {
+        assert(list_int_indexof(&list, i, eq_int) == i);
+    }
+
+    list_int_free(&list);
 }
 
 int main() {
@@ -345,6 +380,7 @@ int main() {
     RUN_TEST(remove);
     RUN_TEST(deep_free_simple);
     RUN_TEST(deep_free_pointer);
+    RUN_TEST(indexof);
     #else
     printf("TEST DISABLED\n");
     #endif

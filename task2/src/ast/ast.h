@@ -37,6 +37,7 @@ struct AST {
         } as_un;
         struct literal{
             enum lit_type type;
+            size_t idx;
             char *value;
         } as_lit;
     };

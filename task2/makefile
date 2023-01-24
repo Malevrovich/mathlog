@@ -13,7 +13,7 @@ LD=gcc
 SRCDIR := src
 CFLAGS += $(shell find ${SRCDIR} -type d | sed 's/^/-I/g')
 
-# Парсим директорию и находим все .asm файлы, пишем их в строку через пробел
+# Парсим директорию и находим все .c файлы, пишем их в строку через пробел
 C_FILES=$(shell find ${SRCDIR}/ -name '*.c' | xargs echo | sed 's/${SRCDIR}\///g')
 
 OBJDIR := .build
