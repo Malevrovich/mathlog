@@ -1,6 +1,6 @@
 PROG_NAME=prog
 
-CFLAGS = -c -O2 -Wall -Werror -std=c17 -Wdiscarded-qualifiers -Wincompatible-pointer-types -Wint-conversion
+CFLAGS = -c -O2 -Wall -Werror -std=c11 -Wdiscarded-qualifiers -Wincompatible-pointer-types -Wint-conversion
 CC = gcc
 
 # Папка в которой будут храниться .d файлы - файлы зависимостей.
