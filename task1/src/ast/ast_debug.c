@@ -21,9 +21,9 @@ const char *UN_OP_STRING[] = {
 
 void print_ast(FILE *out, struct AST* node) {
     if(!node) {
-        fprintf(out, "(NULL)");
+        fprintf(out, "(\nNULL\n)");
     } else if(node->type == AST_NONE) {
-        fprintf(out, "(NONE)");
+        fprintf(out, "(\nNONE\n)");
     } else if(node->type == AST_LITERAL) {
         fprintf(out, "%s", node->as_lit.value);
     } else if(node->type == AST_BINARY) {
@@ -37,6 +37,6 @@ void print_ast(FILE *out, struct AST* node) {
         print_ast(out, node->as_un.operand);
         fprintf(out, ")");
     } else {
-        fprintf(out, "(UNKNOWN AST NODE)");
+        fprintf(out, "(\nUNKNOWN AST NODE\n)");
     }
 }

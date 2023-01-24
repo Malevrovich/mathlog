@@ -13,6 +13,14 @@ DEFINE_LIST(token, struct token)
 DECLARE_LIST(ast, struct AST *)
 DEFINE_LIST(ast, struct AST *)
 
+const char *PARSE_AST_RES_STRING[] = {
+    [PARSE_AST_SUCCESS] = "Success!",
+    [PARSE_AST_TOKEN_ERR] = "Tokenization error!",
+    [PARSE_AST_INVALID_SEQUENCE] = "Invalid sequence!",
+    [PARSE_AST_NULL_POINTER] = "Null pointer!",
+    [PARSE_AST_UNKNOWN_TOKEN] = "Unknown token!"
+};
+
 static const short OP_PRIORITY[] = {
     [BIN_AND] = 3,
     [BIN_OR] = 2,
