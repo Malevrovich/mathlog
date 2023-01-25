@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "typeinfo": "cpp",
+        "stdlib.h": "c",
+        "assert.h": "c",
+        "tokenize.h": "c",
+        "ast_build.h": "c",
+        "token_ast_convert.h": "c",
+        "test_utils.h": "c",
+        "ast_parse.h": "c",
+        "string.h": "c",
+        "list.h": "c",
+        "ast_index.h": "c",
+        "ast.h": "c",
+        "compute.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
