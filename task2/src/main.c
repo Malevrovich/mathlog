@@ -3,6 +3,7 @@
 #include "ast_parse.h"
 #include "ast_debug.h"
 #include "tokenize_debug.h"
+#include "compute.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,8 +29,6 @@ int main() {
         return 1;
     }
 
-
-
     struct parse_ast_res parse_res = parse_ast(tokens);
 
     if(parse_res.status != PARSE_AST_SUCCESS) {
@@ -43,8 +42,15 @@ int main() {
         return 1;
     }
 
-    print_ast(stdout, parse_res.val);
-    printf("\n");
+    struct compute_res res = compute(parse_res.val);
+
+    if(res.true_cnt == 0) {
+        printf("Unsatisfiable\n");
+    } else if(res.false_cnt == 0) {
+        printf("Valid\n");
+    } else {
+        printf("Satisfiable and invalid, %u true and %u false cases\n", res.true_cnt, res.false_cnt);
+    }
 
     return 0;
 }
