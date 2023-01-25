@@ -11,7 +11,7 @@ bool eq(char *lhs, char *rhs) {
     return strcmp(lhs, rhs) == 0;
 }
 
-static size_t linear_dfs_index(struct AST *root, struct list_string **table, size_t size) {
+static size_t linear_dfs_index(struct AST * restrict root, struct list_string ** restrict table, size_t size) {
     if(!root) return size;
     if(root->type == AST_UNARY) return linear_dfs_index(root->as_un.operand, table, size);
     if(root->type == AST_BINARY) {
