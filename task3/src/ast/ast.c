@@ -14,17 +14,17 @@ void free_ast(struct AST **node) {
     *node = NULL;
 }
 
-bool is_equal(const struct AST *lhs, const struct AST *rhs) {
+bool is_ast_equal(const struct AST *lhs, const struct AST *rhs) {
     if(lhs->type == AST_NONE) return rhs->type == AST_NONE;
     if(lhs->type == AST_UNARY) 
         return rhs->type == AST_UNARY && 
                 (lhs->as_un.type == rhs->as_un.type) &&
-                is_equal(lhs->as_un.operand, rhs->as_un.operand);
+                is_ast_equal(lhs->as_un.operand, rhs->as_un.operand);
     if(lhs->type == AST_BINARY) 
         return rhs->type == AST_BINARY &&
                 (lhs->as_bin.type == rhs->as_bin.type) && 
-                is_equal(lhs->as_bin.lhs, rhs->as_bin.lhs) && 
-                is_equal(lhs->as_bin.rhs, rhs->as_bin.rhs);
+                is_ast_equal(lhs->as_bin.lhs, rhs->as_bin.lhs) && 
+                is_ast_equal(lhs->as_bin.rhs, rhs->as_bin.rhs);
     if(lhs->type == AST_LITERAL) 
         return rhs->type == AST_LITERAL && 
                 (strcmp(lhs->as_lit.value, rhs->as_lit.value) == 0) &&
