@@ -68,6 +68,34 @@ static void print_natural(FILE *out, struct AST* node) {
     }
 }
 
+void snprint_natural(char *out, size_t n, struct AST* node) {
+    if(!node) {
+        snprintf(out, n, "NULL");
+    } else if(node->type == AST_NONE) {
+        snprintf(out, n, "NONE");
+    } else if(node->type == AST_LITERAL) {
+        snprintf(out, n, "%s", node->as_lit.value);
+    } else if(node->type == AST_PATTERN) {
+        snprintf(out, n, "%zu", node->as_pattern.idx);
+    } else if(node->type == AST_UNARY) {
+        snprintf(out, n, "(%s", UN_OP_STRING[node->as_un.type]);
+        snprint_natural(out, n, node->as_un.operand);
+        snprintf(out, n, ")");
+    } else if(node->type == AST_BINARY) {
+        snprintf(out, n, "(");
+        snprint_natural(out, n, node->as_bin.lhs);
+        snprintf(out, n, " %s ", BIN_OP_STRING[node->as_bin.type]);
+        snprint_natural(out, n, node->as_bin.rhs);
+        snprintf(out, n, ")");
+    } else {
+        snprintf(out, n, "UNKNOWN");
+    }
+}
+
+void snprint_ast(char *out, size_t n, struct AST* node) {
+    snprint_natural(out, node);
+}
+
 void print_ast(FILE *out, struct AST* node) {
     print_natural(out, node);    
 }

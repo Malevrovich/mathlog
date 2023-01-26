@@ -12,5 +12,6 @@ extern const char *UN_OP_STRING[];
 
 
 void print_ast(FILE *out, struct AST* node);
+void snprint_ast(char *out, size_t n, struct AST* node);
 
 #endif
