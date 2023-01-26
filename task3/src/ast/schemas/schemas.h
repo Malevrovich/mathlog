@@ -4,9 +4,7 @@
 #define _SCHEMAS_H_
 
 #include "ast.h"
-#include "list.h"
-
-DECLARE_LIST(ast, struct AST*)
+#include "ast_list.h"
 
 void add_classic_axioms(struct list_ast **axiomas);
 

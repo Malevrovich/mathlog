@@ -4,13 +4,13 @@
 #include "token_ast_convert.h"
 #include "tokenize.h"
 #include "ast_debug.h"
+#include "ast_list.h"
 
 #include <stdlib.h>
 #include <stdio.h>
 
 DEFINE_LIST(token, struct token)
 
-DECLARE_LIST(ast, struct AST *)
 DEFINE_LIST(ast, struct AST *)
 
 const char *PARSE_AST_RES_STRING[] = {

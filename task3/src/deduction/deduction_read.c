@@ -14,8 +14,8 @@ DEFINE_LIST(ast, struct AST*)
 void free_deduction_header(struct deduction_header *header){
     deep_free_ast(header->goal);
 
-    list_ast_deep_free(header->hypothesis, free_ast);
-    free(header->hypothesis);
+    list_ast_deep_free(header->hypotheses, free_ast);
+    free(header->hypotheses);
 }
 
 struct deduction_header read_deduction_header(FILE * restrict in) {
@@ -51,8 +51,8 @@ struct deduction_header parse_deduction_header(char * restrict str) {
     
     res.goal = goal_parse_res.val;
 
-    res.hypothesis = (struct list_ast **) malloc(sizeof(struct list_ast *));
-    *res.hypothesis = NULL;
+    res.hypotheses = (struct list_ast **) malloc(sizeof(struct list_ast *));
+    *res.hypotheses = NULL;
 
     char *expr = strtok(str, ",");
     while(expr) {
@@ -63,7 +63,7 @@ struct deduction_header parse_deduction_header(char * restrict str) {
             return INVALID_DEDUCTION_HEADER;
         }
 
-        list_ast_push_back(res.hypothesis, expr_parse_res.val);
+        list_ast_push_back(res.hypotheses, expr_parse_res.val);
         
         expr = strtok(NULL, ",");
     }

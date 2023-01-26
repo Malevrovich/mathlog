@@ -4,14 +4,12 @@
 #define _DEDUCTION_PARSE_H_
 
 #include "ast.h"
-#include "list.h"
+#include "ast_list.h"
 
 #include <stdio.h>
 
-DECLARE_LIST(ast, struct AST *)
-
 struct deduction_header {
-    struct list_ast **hypothesis;
+    struct list_ast **hypotheses;
     struct AST *goal;
 };
 

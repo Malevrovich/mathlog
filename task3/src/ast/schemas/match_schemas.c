@@ -13,7 +13,7 @@ static bool is_match_dfs(struct AST *schema, struct AST *root, struct AST *sampl
             samples[schema->as_pattern.idx] = root;
             return true;
         } else {
-            return is_equal(samples[schema->as_pattern.idx], root);
+            return is_ast_equal(samples[schema->as_pattern.idx], root);
         }
     }
     if(schema->type != root->type) return false;
