@@ -73,7 +73,7 @@ static inline size_t list_##name##_indexof(                                     
                                                                                                 \
 __attribute__((unused))                                                                         \
 static inline struct list_##name *list_##name##_find(                                           \
-            struct list_##name **list, type val, bool eq(type lhs, type rhs)) {                 \
+            struct list_##name **list, type val, bool eq(type list_el, type val)) {             \
                                                                                                 \
     if(list_##name##_empty(list)) return NULL;                                                  \
     if(eq((*list)->val, val)) return *list;                                                     \
