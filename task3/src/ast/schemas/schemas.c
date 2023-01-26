@@ -6,12 +6,6 @@
 
 DEFINE_LIST(ast, struct AST*)
 
-static struct AST *build_node(struct AST body) {
-    struct AST *res = create_node();
-    *res = body;
-    return res;
-}
-
 #define IMPL build_node(make_binop(BIN_IMPLICATION))
 #define PATTERN(idx) build_node(make_pattern(idx))
 

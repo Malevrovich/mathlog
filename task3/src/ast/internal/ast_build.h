@@ -9,6 +9,12 @@ inline struct AST *create_node() {
     return (struct AST *) malloc(sizeof( struct AST )); 
 }
 
+inline struct AST *build_node(struct AST body) {
+    struct AST *res = create_node();
+    *res = body;
+    return res;
+}
+
 inline struct AST make_binop(enum binop_type type) {
     return (struct AST) { .type=AST_BINARY, .as_bin = { type, NULL, NULL }};
 }
