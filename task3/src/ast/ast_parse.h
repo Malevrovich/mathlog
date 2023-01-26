@@ -3,6 +3,9 @@
 #ifndef _AST_PARSE_H_
 #define _AST_PARSE_H_
 
+#include "list.h"
+#include "tokenize.h"
+
 struct parse_ast_res {
     struct AST *val;
     enum {
@@ -18,5 +21,6 @@ static const struct parse_ast_res PARSE_NULL_POINTER = (struct parse_ast_res) { 
 static const struct parse_ast_res PARSE_UNKNOWN_TOKEN = (struct parse_ast_res ) { NULL, PARSE_AST_UNKNOWN_TOKEN };
 
 struct parse_ast_res parse_ast(struct list_token **tokens);
+struct parse_ast_res parse_ast_from(const char * restrict str);
 
 #endif

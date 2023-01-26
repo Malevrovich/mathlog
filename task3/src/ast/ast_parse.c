@@ -2,7 +2,7 @@
 #include "ast_build.h"
 #include "ast_parse.h"
 #include "token_ast_convert.h"
-#include "tokenize_debug.h"
+#include "tokenize.h"
 #include "ast_debug.h"
 
 #include <stdlib.h>
@@ -43,11 +43,6 @@ enum parse_res_status_internal {
 
 static const struct parse_ast_res PARSE_CONTINUE = (struct parse_ast_res ) { NULL, (int) PARSE_AST_CONTINUE };
 static const struct parse_ast_res PARSE_BREAK = (struct parse_ast_res) { NULL, (int) PARSE_AST_BREAK };
-
-void free_ast(struct AST **node) {
-    free(*node);
-    *node = NULL;
-}
 
 static struct parse_ast_res with_free_resources(struct list_ast **res, struct list_token **buf,
                                                                          struct parse_ast_res parse_res) {
@@ -201,4 +196,16 @@ struct parse_ast_res parse_ast(struct list_token **tokens) {
     free(res);
     free(buf);
     return (struct parse_ast_res) { .val=res_node, .status=PARSE_AST_SUCCESS };
+}
+
+struct parse_ast_res parse_ast_from(const char * restrict str) {
+    struct list_token **tokens = tokenize(str);
+
+    if(!tokens) return (struct parse_ast_res) { .val=NULL, .status=PARSE_AST_TOKEN_ERR };
+    
+    struct parse_ast_res res = parse_ast(tokens);
+    list_token_free(tokens);
+    free(tokens);
+
+    return res;
 }

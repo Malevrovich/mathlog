@@ -25,4 +25,8 @@ inline struct AST make_none() {
     return (struct AST) { .type=AST_NONE };
 }
 
+inline struct AST make_pattern(size_t idx) {
+    return (struct AST) { .type=AST_PATTERN, .as_pattern = { .idx=idx } };
+}
+
 #endif /* _AST_BUILD_H_ */
