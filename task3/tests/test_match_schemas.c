@@ -28,11 +28,11 @@ TEST(simple) {
     struct AST *expr4 = parse_ast_from("!A&C -> (A|A|A|A|A|U) -> !A&B").val;
     struct AST *expr5 = parse_ast_from("(B -> (B -> B)) -> (A -> (B -> (B -> B)))").val;
 
-    assert(is_match(axiom, expr1));
-    assert(!is_match(axiom, expr2));
-    assert(is_match(axiom, expr3));
-    assert(!is_match(axiom, expr4));
-    assert(is_match(axiom, expr5));
+    assert(is_ast_match(axiom, expr1));
+    assert(!is_ast_match(axiom, expr2));
+    assert(is_ast_match(axiom, expr3));
+    assert(!is_ast_match(axiom, expr4));
+    assert(is_ast_match(axiom, expr5));
 
     deep_free_ast(expr1);
     deep_free_ast(expr2);
@@ -51,10 +51,10 @@ TEST(second) {
     struct AST *expr3 = parse_ast_from("(A -> (A -> A)) -> ((A -> ((A -> !A) -> !A)) -> (A -> A))").val;
     struct AST *expr4 = parse_ast_from("(A -> (A -> A)) -> ((A -> ((A -> !A) -> A)) -> (A -> A))").val;
 
-    assert(is_match(axiom, expr1));
-    assert(is_match(axiom, expr2));
-    assert(!is_match(axiom, expr3));
-    assert(!is_match(axiom, expr4));
+    assert(is_ast_match(axiom, expr1));
+    assert(is_ast_match(axiom, expr2));
+    assert(!is_ast_match(axiom, expr3));
+    assert(!is_ast_match(axiom, expr4));
 
     deep_free_ast(expr1);
     deep_free_ast(expr2);

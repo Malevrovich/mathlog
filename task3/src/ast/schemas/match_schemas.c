@@ -28,7 +28,7 @@ static bool is_match_dfs(struct AST *schema, struct AST *root, struct AST *sampl
     return false;
 }
 
-bool is_match(struct AST *schema, struct AST *root) {
+bool is_ast_match(struct AST *schema, struct AST *root) {
     struct AST *samples[MAX_PATTERN_COUNT_IN_SCHEMA];
     for(size_t i = 0; i < MAX_PATTERN_COUNT_IN_SCHEMA; i++) 
         samples[i] = NULL;

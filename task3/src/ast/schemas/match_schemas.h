@@ -5,6 +5,6 @@
 
 #include "ast.h"
 
-bool is_match(struct AST *pattern, struct AST *root);
+bool is_ast_match(struct AST *pattern, struct AST *root);
 
 #endif
