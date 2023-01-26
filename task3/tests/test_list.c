@@ -363,6 +363,21 @@ TEST(indexof) {
     list_int_free(&list);
 }
 
+TEST(find) {
+    struct list_int *list = list_int_create(0);
+    list_int_push_back(&list, 1);
+    list_int_push_back(&list, 2);
+    list_int_push_back(&list, 3);
+    list_int_push_back(&list, 4);
+    list_int_push_back(&list, 5);
+    
+    for(size_t i = 0; i < 6; i++) {
+        assert(list_int_find(&list, i, eq_int)->val == i);
+    }
+
+    list_int_free(&list);
+}
+
 int main() {
     #ifndef DISABLED
     RUN_TEST(free);
@@ -381,6 +396,7 @@ int main() {
     RUN_TEST(deep_free_simple);
     RUN_TEST(deep_free_pointer);
     RUN_TEST(indexof);
+    RUN_TEST(find);
     #else
     printf("TEST DISABLED\n");
     #endif
