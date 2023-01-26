@@ -8,7 +8,7 @@
 #include <stdlib.h>
 
 enum AST_type {
-    AST_BINARY, AST_UNARY, AST_LITERAL, AST_NONE
+    AST_BINARY, AST_UNARY, AST_LITERAL, AST_PATTERN, AST_NONE
 };
 
 enum binop_type {
@@ -40,9 +40,15 @@ struct AST {
             size_t idx;
             char *value;
         } as_lit;
+        struct pattern{
+            size_t idx;
+        } as_pattern;
     };
 };
 
 void deep_free_ast(struct AST* node);
+void free_ast(struct AST **node);
+
+bool is_equal(const struct AST *lhs, const struct AST *rhs);
 
 #endif /* _AST_H_ */
