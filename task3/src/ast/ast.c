@@ -1,12 +1,15 @@
 #include "ast.h"
+#include "ast_build.h"
 
 #include <string.h>
 
 void deep_free_ast(struct AST* node) {
+    if(!node) return;
     if(node->type == AST_UNARY) deep_free_ast(node->as_un.operand);
     if(node->type == AST_BINARY) { deep_free_ast(node->as_bin.lhs); deep_free_ast(node->as_bin.rhs); }
     if(node->type == AST_LITERAL) { free(node->as_lit.value); }
     free(node);
+    *node = NULL;
 }
 
 void free_ast(struct AST **node) {
@@ -31,4 +34,21 @@ bool is_ast_equal(const struct AST *lhs, const struct AST *rhs) {
                 (lhs->as_lit.idx == rhs->as_lit.idx);
     if(lhs->type == AST_PATTERN) return rhs->type == AST_PATTERN && (lhs->as_pattern.idx == rhs->as_pattern.idx);
     return false;
+}
+
+struct AST *deep_copy_ast(struct AST *node) {
+    struct AST *res = create_node();
+    *res = *node;
+    if(node->type == AST_LITERAL) {
+        res->as_lit.value = calloc(strlen(node->as_lit.value), sizeof(char));
+        strcat(res->as_lit.value, node->as_lit.value);
+    }
+    if(node->type == AST_UNARY) {
+        res->as_un.operand = deep_copy(node->as_un.operand);
+    }
+    if(node->type == AST_BINARY) {
+        res->as_bin.lhs = deep_copy(node->as_bin.lhs);
+        res->as_bin.rhs = deep_copy(node->as_bin.rhs);
+    }
+    return res;
 }
