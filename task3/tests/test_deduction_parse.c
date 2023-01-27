@@ -13,12 +13,12 @@ char *str = calloc(100, sizeof(char));                          \
 strcat(str, string);                                            \
 struct deduction_header header = parse_deduction_header(str);   \
 assert(header.goal != NULL);                                    \
-assert(header.hypothesis != NULL)
+assert(header.hypotheses != NULL)
 
 
 #define INIT_AST_CHECK                                      \
-assert(!list_ast_empty(header.hypothesis));                 \
-struct list_ast *cur = list_ast_head(header.hypothesis);    \
+assert(!list_ast_empty(header.hypotheses));                 \
+struct list_ast *cur = list_ast_head(header.hypotheses);    \
 struct list_ast *head = cur                                
 
 #define NEXT cur = cur->next
