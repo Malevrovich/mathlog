@@ -9,7 +9,7 @@
 
 #include <assert.h>
 
-#define DISABLED
+// #define DISABLED
 
 DEFINE_LIST(token, struct token)
 
@@ -296,6 +296,19 @@ TEST(index) {
     CLEAR;
 }
 
+TEST(empty) {
+    char *str = "";
+    struct list_token **tokens = tokenize(str);
+
+    struct parse_ast_res parse_res = parse_ast(tokens);
+    assert(parse_res.status == PARSE_AST_SUCCESS);
+
+    struct AST *ast = parse_res.val;
+
+    assert(ast == NULL);
+    CLEAR;
+}
+
 int main() {
     #ifndef DISABLED
     RUN_TEST(convert);
@@ -309,6 +322,7 @@ int main() {
     RUN_TEST(input_one);
     RUN_TEST(input_two);
     RUN_TEST(index);
+    RUN_TEST(empty);
     #else
     printf("TEST DISABLED\n");
     #endif

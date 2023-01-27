@@ -50,6 +50,6 @@ void deep_free_ast(struct AST* node);
 void free_ast(struct AST **node);
 struct AST *deep_copy_ast(struct AST *node);
 
-bool is_ast_equal(const struct AST *lhs, const struct AST *rhs);
+bool is_ast_equal(struct AST *lhs, struct AST *rhs);
 
 #endif /* _AST_H_ */

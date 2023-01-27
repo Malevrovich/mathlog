@@ -5,19 +5,22 @@
 
 void deep_free_ast(struct AST* node) {
     if(!node) return;
-    if(node->type == AST_UNARY) deep_free_ast(node->as_un.operand);
-    if(node->type == AST_BINARY) { deep_free_ast(node->as_bin.lhs); deep_free_ast(node->as_bin.rhs); }
+    if(node->type == AST_UNARY) free_ast(&(node->as_un.operand));
+    if(node->type == AST_BINARY) { free_ast(&(node->as_bin.lhs)); free_ast(&(node->as_bin.rhs)); }
     if(node->type == AST_LITERAL) { free(node->as_lit.value); }
     free(node);
-    *node = NULL;
 }
 
 void free_ast(struct AST **node) {
-    deep_free_ast(*node);
+    if(!node || !(*node)) return;
+    if((*node)->type == AST_UNARY) free_ast(&((*node)->as_un.operand));
+    if((*node)->type == AST_BINARY) { free_ast(&((*node)->as_bin.lhs)); free_ast(&((*node)->as_bin.rhs)); }
+    if((*node)->type == AST_LITERAL) { free((*node)->as_lit.value); }
+    free(*node);
     *node = NULL;
 }
 
-bool is_ast_equal(const struct AST *lhs, const struct AST *rhs) {
+bool is_ast_equal(struct AST *lhs, struct AST *rhs) {
     if(lhs->type == AST_NONE) return rhs->type == AST_NONE;
     if(lhs->type == AST_UNARY) 
         return rhs->type == AST_UNARY && 
@@ -44,11 +47,11 @@ struct AST *deep_copy_ast(struct AST *node) {
         strcat(res->as_lit.value, node->as_lit.value);
     }
     if(node->type == AST_UNARY) {
-        res->as_un.operand = deep_copy(node->as_un.operand);
+        res->as_un.operand = deep_copy_ast(node->as_un.operand);
     }
     if(node->type == AST_BINARY) {
-        res->as_bin.lhs = deep_copy(node->as_bin.lhs);
-        res->as_bin.rhs = deep_copy(node->as_bin.rhs);
+        res->as_bin.lhs = deep_copy_ast(node->as_bin.lhs);
+        res->as_bin.rhs = deep_copy_ast(node->as_bin.rhs);
     }
     return res;
 }

@@ -93,7 +93,7 @@ void snprint_natural(char *out, size_t n, struct AST* node) {
 }
 
 void snprint_ast(char *out, size_t n, struct AST* node) {
-    snprint_natural(out, node);
+    snprint_natural(out, n, node);
 }
 
 void print_ast(FILE *out, struct AST* node) {
