@@ -27,7 +27,7 @@ static inline type list_##name##_back(struct list_##name **list) {              
                                                                                                 \
 __attribute__((unused))                                                                         \
 static inline bool list_##name##_empty(struct list_##name **list) {                             \
-    return (list) && !(*list);                                                                  \
+    return (!list) || !(*list);                                                                 \
 }                                                                                               \
                                                                                                 \
 __attribute__((unused))                                                                         \
