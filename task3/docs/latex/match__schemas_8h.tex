@@ -1,0 +1,45 @@
+\hypertarget{match__schemas_8h}{}\doxysection{src/ast/schemas/match\+\_\+schemas.h File Reference}
+\label{match__schemas_8h}\index{src/ast/schemas/match\_schemas.h@{src/ast/schemas/match\_schemas.h}}
+
+
+Match formulas with schemas.  
+
+
+{\ttfamily \#include \char`\"{}ast.\+h\char`\"{}}\newline
+Include dependency graph for match\+\_\+schemas.\+h\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{match__schemas_8h_a6df8af2dbc5db6eccd6027996f3b5d25}{is\+\_\+ast\+\_\+match}} (struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$pattern, struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Check if formula match pattern/schema. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Match formulas with schemas. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{match__schemas_8h_a6df8af2dbc5db6eccd6027996f3b5d25}\label{match__schemas_8h_a6df8af2dbc5db6eccd6027996f3b5d25}} 
+\index{match\_schemas.h@{match\_schemas.h}!is\_ast\_match@{is\_ast\_match}}
+\index{is\_ast\_match@{is\_ast\_match}!match\_schemas.h@{match\_schemas.h}}
+\doxysubsubsection{\texorpdfstring{is\_ast\_match()}{is\_ast\_match()}}
+{\footnotesize\ttfamily bool is\+\_\+ast\+\_\+match (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$}]{pattern,  }\item[{struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Check if formula match pattern/schema. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em pattern} & Pattern in form of \mbox{\hyperlink{structAST}{A\+ST}} with special nodes \\
+\hline
+\mbox{\texttt{ in}}  & {\em root} & Tree to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true The formula could be generated with pattern 
+
+false The formula doesn\textquotesingle{}t suit the pattern 
+\end{DoxyReturn}

@@ -1,0 +1,79 @@
+\hypertarget{deduction__read_8h}{}\doxysection{src/deduction/deduction\+\_\+read.h File Reference}
+\label{deduction__read_8h}\index{src/deduction/deduction\_read.h@{src/deduction/deduction\_read.h}}
+
+
+Functions to read the deduction first line.  
+
+
+{\ttfamily \#include \char`\"{}ast.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ast\+\_\+list.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+Include dependency graph for deduction\+\_\+read.\+h\+:
+% FIG 0
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structdeduction__header}{deduction\+\_\+header}}
+\begin{DoxyCompactList}\small\item\em Internal representation of deduction header\+: h\+\_\+1, ..., h\+\_\+n $\vert$-\/ beta. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structdeduction__header}{deduction\+\_\+header}} \mbox{\hyperlink{deduction__read_8h_a6949085561ebff68719869e8e3266ab5}{read\+\_\+deduction\+\_\+header}} (F\+I\+LE $\ast$restrict in)
+\begin{DoxyCompactList}\small\item\em Function to read deduction header from stream. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structdeduction__header}{deduction\+\_\+header}} \mbox{\hyperlink{deduction__read_8h_a5adeb156cb313b493ba16d4706c230a0}{parse\+\_\+deduction\+\_\+header}} (char $\ast$restrict str)
+\begin{DoxyCompactList}\small\item\em Function to parse deduction header from string. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{deduction__read_8h_abd3975dbdc058579720a6f3724234157}\label{deduction__read_8h_abd3975dbdc058579720a6f3724234157}} 
+void {\bfseries free\+\_\+deduction\+\_\+header} (struct \mbox{\hyperlink{structdeduction__header}{deduction\+\_\+header}} $\ast$header)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions to read the deduction first line. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{deduction__read_8h_a5adeb156cb313b493ba16d4706c230a0}\label{deduction__read_8h_a5adeb156cb313b493ba16d4706c230a0}} 
+\index{deduction\_read.h@{deduction\_read.h}!parse\_deduction\_header@{parse\_deduction\_header}}
+\index{parse\_deduction\_header@{parse\_deduction\_header}!deduction\_read.h@{deduction\_read.h}}
+\doxysubsubsection{\texorpdfstring{parse\_deduction\_header()}{parse\_deduction\_header()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structdeduction__header}{deduction\+\_\+header}} parse\+\_\+deduction\+\_\+header (\begin{DoxyParamCaption}\item[{char $\ast$restrict}]{str }\end{DoxyParamCaption})}
+
+
+
+Function to parse deduction header from string. 
+
+Parse str to struct \mbox{\hyperlink{structdeduction__header}{deduction\+\_\+header}}. ~\newline
+Format of header\+: h\+\_\+1, h\+\_\+2, ..., h\+\_\+n $\vert$-\/ beta ~\newline
+Where\+: h\+\_\+1, ..., h\+\_\+n and beta -\/ statements
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em str} & String that contains header \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct \mbox{\hyperlink{structdeduction__header}{deduction\+\_\+header}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{deduction__read_8h_a6949085561ebff68719869e8e3266ab5}\label{deduction__read_8h_a6949085561ebff68719869e8e3266ab5}} 
+\index{deduction\_read.h@{deduction\_read.h}!read\_deduction\_header@{read\_deduction\_header}}
+\index{read\_deduction\_header@{read\_deduction\_header}!deduction\_read.h@{deduction\_read.h}}
+\doxysubsubsection{\texorpdfstring{read\_deduction\_header()}{read\_deduction\_header()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structdeduction__header}{deduction\+\_\+header}} read\+\_\+deduction\+\_\+header (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$restrict}]{in }\end{DoxyParamCaption})}
+
+
+
+Function to read deduction header from stream. 
+
+Reads the line from file and parse it to header. ~\newline
+Format of header\+: h\+\_\+1, h\+\_\+2, ..., h\+\_\+n $\vert$-\/ beta ~\newline
+Where\+: h\+\_\+1, ..., h\+\_\+n and beta -\/ statements
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em in} & File that contains header \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct \mbox{\hyperlink{structdeduction__header}{deduction\+\_\+header}} 
+\end{DoxyReturn}

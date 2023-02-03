@@ -1,0 +1,53 @@
+\hypertarget{structAST}{}\doxysection{A\+ST Struct Reference}
+\label{structAST}\index{AST@{AST}}
+
+
+Abstract Syntax Tree node.  
+
+
+
+
+{\ttfamily \#include $<$ast.\+h$>$}
+
+
+
+Collaboration diagram for A\+ST\+:
+% FIG 0
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structAST_a949ee05cf37ee6762885ce258fd6d45c}\label{structAST_a949ee05cf37ee6762885ce258fd6d45c}} 
+enum \mbox{\hyperlink{ast_8h_a00b64ce290605a0b3a43ec3521cfb03f}{A\+S\+T\+\_\+type}} {\bfseries type}
+\item 
+\mbox{\Hypertarget{structAST_a09b45515fc6090f7a813d2788f3ec600}\label{structAST_a09b45515fc6090f7a813d2788f3ec600}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>struct {\bfseries binary} \{\\
+\>\>enum \mbox{\hyperlink{ast_8h_a4be9051125904933e79e2de7967db005}{binop\_type}} {\bfseries type}\\
+\>\>struct \mbox{\hyperlink{structAST}{AST}} $\ast$ {\bfseries lhs}\\
+\>\>struct \mbox{\hyperlink{structAST}{AST}} $\ast$ {\bfseries rhs}\\
+\>\} {\bfseries as\_bin}\\
+\>struct {\bfseries unary} \{\\
+\>\>enum \mbox{\hyperlink{ast_8h_a1a9f142d0095c55983260490bb1197f3}{unop\_type}} {\bfseries type}\\
+\>\>struct \mbox{\hyperlink{structAST}{AST}} $\ast$ {\bfseries operand}\\
+\>\} {\bfseries as\_un}\\
+\>struct {\bfseries literal} \{\\
+\>\>enum \mbox{\hyperlink{ast_8h_a347afac8ffb3bd69ac23dcbbaef6197f}{lit\_type}} {\bfseries type}\\
+\>\>size\_t {\bfseries idx}\\
+\>\>char $\ast$ {\bfseries value}\\
+\>\} {\bfseries as\_lit}\\
+\>struct {\bfseries pattern} \{\\
+\>\>size\_t {\bfseries idx}\\
+\>\} {\bfseries as\_pattern}\\
+\}; \\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract Syntax Tree node. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/ast/\mbox{\hyperlink{ast_8h}{ast.\+h}}\end{DoxyCompactItemize}

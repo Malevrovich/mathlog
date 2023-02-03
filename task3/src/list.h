@@ -1,3 +1,7 @@
+/**
+ * @file list.h
+ * @brief Set of macros that provide implementation of double linked list's templates
+ */
 #pragma once
 
 #ifndef _DOUBLE_LINKED_LIST_H_
@@ -7,6 +11,11 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * @brief Declares list's node type
+ * \param [in] name String that will be placed instead of NAME in declaration \code struct list_NAME {}; \endcode 
+ * \param [in] type The type of value contained in declared list
+ */
 #define DECLARE_LIST(name, type)                \
 struct list_##name {                            \
     type val;                                   \
@@ -14,6 +23,12 @@ struct list_##name {                            \
     struct list_##name *prev;                   \
 };
 
+/**
+ * @brief Defines read operation with specific list
+ * 
+ * Defines functions: list_NAME_front, list_NAME_back, list_NAME_empty, list_NAME_size, list_NAME_head, list_NAME_last,
+ * list_NAME_indexof, list_NAME_find
+ */
 #define DEFINE_READ_LIST(name, type)                                                            \
 __attribute__((unused))                                                                         \
 static inline type list_##name##_front(struct list_##name **list) {                             \
@@ -85,10 +100,14 @@ static inline struct list_##name *list_##name##_find(                           
     return cur;                                                                                 \
 }
 
-    
-
-
-
+/**
+ * @brief Defines write and read operations with specified list
+ * 
+ * Defines functions: list_NAME_front, list_NAME_back, list_NAME_empty, list_NAME_size, list_NAME_head, list_NAME_last,
+ * list_NAME_indexof, list_NAME_find,
+ * list_NAME_create, list_NAME_push_back, list_NAME_push_front, list_NAME_pop_back, list_NAME_pop_front,
+ * list_NAME_free, list_NAME_deep_free, list_NAME_insert_after, list_NAME_remove, list_NAME_map
+ */
 #define DEFINE_LIST(name, type)                                                         \
 DEFINE_READ_LIST(name, type)                                                            \
 __attribute__((unused))                                                                 \
@@ -219,7 +238,11 @@ static void list_##name##_deep_free(struct list_##name **list,                  
     *list = NULL;                                                                       \
 }                                                                                       
 
-
+/**
+ * @brief Defines debug operations with specified list
+ * 
+ * Defines functions: list_NAME_print
+ */
 #define DEFINE_LIST_DEBUG(name, type)                                                            \
 typedef void (name##_element_printer) (type *);                                                  \
 static void list_##name##_print(struct list_##name **list, name##_element_printer p){            \

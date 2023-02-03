@@ -1,0 +1,151 @@
+\hypertarget{ast__build_8h}{}\doxysection{src/ast/internal/ast\+\_\+build.h File Reference}
+\label{ast__build_8h}\index{src/ast/internal/ast\_build.h@{src/ast/internal/ast\_build.h}}
+
+
+Functions to create \mbox{\hyperlink{structAST}{A\+ST}} nodes.  
+
+
+{\ttfamily \#include \char`\"{}ast.\+h\char`\"{}}\newline
+Include dependency graph for ast\+\_\+build.\+h\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$ \mbox{\hyperlink{ast__build_8h_a470de6de12ce9fc75404f1fa43aa5f00}{create\+\_\+node}} ()
+\begin{DoxyCompactList}\small\item\em Allocate memory for node. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$ \mbox{\hyperlink{ast__build_8h_ad04f863211f91ecbeccf822968798594}{build\+\_\+node}} (struct \mbox{\hyperlink{structAST}{A\+ST}} body)
+\begin{DoxyCompactList}\small\item\em Creates node with given body. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structAST}{A\+ST}} \mbox{\hyperlink{ast__build_8h_aa2359d963e90c45972d384a453b9db45}{make\+\_\+binop}} (enum \mbox{\hyperlink{ast_8h_a4be9051125904933e79e2de7967db005}{binop\+\_\+type}} type)
+\begin{DoxyCompactList}\small\item\em Generates \mbox{\hyperlink{structAST}{A\+ST}} body with A\+S\+T\+\_\+\+B\+I\+N\+OP type. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structAST}{A\+ST}} \mbox{\hyperlink{ast__build_8h_acd7f36ecd5e50f095f019bb2181e8451}{make\+\_\+unop}} (enum \mbox{\hyperlink{ast_8h_a1a9f142d0095c55983260490bb1197f3}{unop\+\_\+type}} type)
+\begin{DoxyCompactList}\small\item\em Generates \mbox{\hyperlink{structAST}{A\+ST}} body with A\+S\+T\+\_\+\+U\+N\+OP type. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structAST}{A\+ST}} \mbox{\hyperlink{ast__build_8h_a19baf623f7949f03ddff71b2e1e609cf}{make\+\_\+var}} (char $\ast$value)
+\begin{DoxyCompactList}\small\item\em Generates \mbox{\hyperlink{structAST}{A\+ST}} body with A\+S\+T\+\_\+\+L\+IT type. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structAST}{A\+ST}} \mbox{\hyperlink{ast__build_8h_a52d58dc0fd8f9cec29d5ae3e361044f6}{make\+\_\+none}} ()
+\begin{DoxyCompactList}\small\item\em Generates \mbox{\hyperlink{structAST}{A\+ST}} body with A\+S\+T\+\_\+\+N\+O\+NE type. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structAST}{A\+ST}} \mbox{\hyperlink{ast__build_8h_aadab9642aab7d0ccc14e0e428d04a8ce}{make\+\_\+pattern}} (size\+\_\+t idx)
+\begin{DoxyCompactList}\small\item\em Generates \mbox{\hyperlink{structAST}{A\+ST}} body with A\+S\+T\+\_\+\+P\+A\+T\+T\+E\+RN type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions to create \mbox{\hyperlink{structAST}{A\+ST}} nodes. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ast__build_8h_ad04f863211f91ecbeccf822968798594}\label{ast__build_8h_ad04f863211f91ecbeccf822968798594}} 
+\index{ast\_build.h@{ast\_build.h}!build\_node@{build\_node}}
+\index{build\_node@{build\_node}!ast\_build.h@{ast\_build.h}}
+\doxysubsubsection{\texorpdfstring{build\_node()}{build\_node()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structAST}{A\+ST}}$\ast$ build\+\_\+node (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structAST}{A\+ST}}}]{body }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Creates node with given body. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em body} & Body to place in new node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct A\+S\+T$\ast$ node -\/ generated node 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ast__build_8h_a470de6de12ce9fc75404f1fa43aa5f00}\label{ast__build_8h_a470de6de12ce9fc75404f1fa43aa5f00}} 
+\index{ast\_build.h@{ast\_build.h}!create\_node@{create\_node}}
+\index{create\_node@{create\_node}!ast\_build.h@{ast\_build.h}}
+\doxysubsubsection{\texorpdfstring{create\_node()}{create\_node()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structAST}{A\+ST}}$\ast$ create\+\_\+node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Allocate memory for node. 
+
+\begin{DoxyReturn}{Returns}
+struct A\+S\+T$\ast$ genarated node 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ast__build_8h_aa2359d963e90c45972d384a453b9db45}\label{ast__build_8h_aa2359d963e90c45972d384a453b9db45}} 
+\index{ast\_build.h@{ast\_build.h}!make\_binop@{make\_binop}}
+\index{make\_binop@{make\_binop}!ast\_build.h@{ast\_build.h}}
+\doxysubsubsection{\texorpdfstring{make\_binop()}{make\_binop()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structAST}{A\+ST}} make\+\_\+binop (\begin{DoxyParamCaption}\item[{enum \mbox{\hyperlink{ast_8h_a4be9051125904933e79e2de7967db005}{binop\+\_\+type}}}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Generates \mbox{\hyperlink{structAST}{A\+ST}} body with A\+S\+T\+\_\+\+B\+I\+N\+OP type. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em type} & Type of binary operation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct \mbox{\hyperlink{structAST}{A\+ST}} node -\/ generated body 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ast__build_8h_a52d58dc0fd8f9cec29d5ae3e361044f6}\label{ast__build_8h_a52d58dc0fd8f9cec29d5ae3e361044f6}} 
+\index{ast\_build.h@{ast\_build.h}!make\_none@{make\_none}}
+\index{make\_none@{make\_none}!ast\_build.h@{ast\_build.h}}
+\doxysubsubsection{\texorpdfstring{make\_none()}{make\_none()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structAST}{A\+ST}} make\+\_\+none (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Generates \mbox{\hyperlink{structAST}{A\+ST}} body with A\+S\+T\+\_\+\+N\+O\+NE type. 
+
+\begin{DoxyReturn}{Returns}
+struct \mbox{\hyperlink{structAST}{A\+ST}} node -\/ generated body 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ast__build_8h_aadab9642aab7d0ccc14e0e428d04a8ce}\label{ast__build_8h_aadab9642aab7d0ccc14e0e428d04a8ce}} 
+\index{ast\_build.h@{ast\_build.h}!make\_pattern@{make\_pattern}}
+\index{make\_pattern@{make\_pattern}!ast\_build.h@{ast\_build.h}}
+\doxysubsubsection{\texorpdfstring{make\_pattern()}{make\_pattern()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structAST}{A\+ST}} make\+\_\+pattern (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Generates \mbox{\hyperlink{structAST}{A\+ST}} body with A\+S\+T\+\_\+\+P\+A\+T\+T\+E\+RN type. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em idx} & Index of pattern \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct \mbox{\hyperlink{structAST}{A\+ST}} node -\/ generated body 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ast__build_8h_acd7f36ecd5e50f095f019bb2181e8451}\label{ast__build_8h_acd7f36ecd5e50f095f019bb2181e8451}} 
+\index{ast\_build.h@{ast\_build.h}!make\_unop@{make\_unop}}
+\index{make\_unop@{make\_unop}!ast\_build.h@{ast\_build.h}}
+\doxysubsubsection{\texorpdfstring{make\_unop()}{make\_unop()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structAST}{A\+ST}} make\+\_\+unop (\begin{DoxyParamCaption}\item[{enum \mbox{\hyperlink{ast_8h_a1a9f142d0095c55983260490bb1197f3}{unop\+\_\+type}}}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Generates \mbox{\hyperlink{structAST}{A\+ST}} body with A\+S\+T\+\_\+\+U\+N\+OP type. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em type} & Type of unary operation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct \mbox{\hyperlink{structAST}{A\+ST}} node -\/ generated body 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ast__build_8h_a19baf623f7949f03ddff71b2e1e609cf}\label{ast__build_8h_a19baf623f7949f03ddff71b2e1e609cf}} 
+\index{ast\_build.h@{ast\_build.h}!make\_var@{make\_var}}
+\index{make\_var@{make\_var}!ast\_build.h@{ast\_build.h}}
+\doxysubsubsection{\texorpdfstring{make\_var()}{make\_var()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structAST}{A\+ST}} make\+\_\+var (\begin{DoxyParamCaption}\item[{char $\ast$}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Generates \mbox{\hyperlink{structAST}{A\+ST}} body with A\+S\+T\+\_\+\+L\+IT type. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & Value of literal \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct \mbox{\hyperlink{structAST}{A\+ST}} node -\/ generated body 
+\end{DoxyReturn}

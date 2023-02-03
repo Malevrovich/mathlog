@@ -1,0 +1,77 @@
+\hypertarget{ast__parse_8h}{}\doxysection{src/ast/ast\+\_\+parse.h File Reference}
+\label{ast__parse_8h}\index{src/ast/ast\_parse.h@{src/ast/ast\_parse.h}}
+
+
+Parse \mbox{\hyperlink{structAST}{A\+ST}}.  
+
+
+{\ttfamily \#include \char`\"{}list.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tokenize.\+h\char`\"{}}\newline
+Include dependency graph for ast\+\_\+parse.\+h\+:
+% FIG 0
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structparse__ast__res}{parse\+\_\+ast\+\_\+res}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structparse__ast__res}{parse\+\_\+ast\+\_\+res}} \mbox{\hyperlink{ast__parse_8h_acae79b8c9e78742cbc11d0f6c7df4197}{parse\+\_\+ast}} (struct list\+\_\+token $\ast$$\ast$tokens)
+\begin{DoxyCompactList}\small\item\em Parse \mbox{\hyperlink{structAST}{A\+ST}} from list of tokens. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structparse__ast__res}{parse\+\_\+ast\+\_\+res}} \mbox{\hyperlink{ast__parse_8h_a1f17527f1bc066d03d45c217c5d561f6}{parse\+\_\+ast\+\_\+from}} (const char $\ast$restrict str)
+\begin{DoxyCompactList}\small\item\em Parse \mbox{\hyperlink{structAST}{A\+ST}} from string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ast__parse_8h_a123e1210530be23a47e10f079d0e615d}\label{ast__parse_8h_a123e1210530be23a47e10f079d0e615d}} 
+const char $\ast$ {\bfseries P\+A\+R\+S\+E\+\_\+\+A\+S\+T\+\_\+\+R\+E\+S\+\_\+\+S\+T\+R\+I\+NG} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Parse \mbox{\hyperlink{structAST}{A\+ST}}. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ast__parse_8h_acae79b8c9e78742cbc11d0f6c7df4197}\label{ast__parse_8h_acae79b8c9e78742cbc11d0f6c7df4197}} 
+\index{ast\_parse.h@{ast\_parse.h}!parse\_ast@{parse\_ast}}
+\index{parse\_ast@{parse\_ast}!ast\_parse.h@{ast\_parse.h}}
+\doxysubsubsection{\texorpdfstring{parse\_ast()}{parse\_ast()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structparse__ast__res}{parse\+\_\+ast\+\_\+res}} parse\+\_\+ast (\begin{DoxyParamCaption}\item[{struct list\+\_\+token $\ast$$\ast$}]{tokens }\end{DoxyParamCaption})}
+
+
+
+Parse \mbox{\hyperlink{structAST}{A\+ST}} from list of tokens. 
+
+Use Shunting yard algorithm to parse expression
+
+
+\begin{DoxyParams}{Parameters}
+{\em tokens} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct \mbox{\hyperlink{structparse__ast__res}{parse\+\_\+ast\+\_\+res}} -\/ status code and parsed \mbox{\hyperlink{structAST}{A\+ST}} if success 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ast__parse_8h_a1f17527f1bc066d03d45c217c5d561f6}\label{ast__parse_8h_a1f17527f1bc066d03d45c217c5d561f6}} 
+\index{ast\_parse.h@{ast\_parse.h}!parse\_ast\_from@{parse\_ast\_from}}
+\index{parse\_ast\_from@{parse\_ast\_from}!ast\_parse.h@{ast\_parse.h}}
+\doxysubsubsection{\texorpdfstring{parse\_ast\_from()}{parse\_ast\_from()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structparse__ast__res}{parse\+\_\+ast\+\_\+res}} parse\+\_\+ast\+\_\+from (\begin{DoxyParamCaption}\item[{const char $\ast$restrict}]{str }\end{DoxyParamCaption})}
+
+
+
+Parse \mbox{\hyperlink{structAST}{A\+ST}} from string. 
+
+Firstly, tokenize string, then apply Shunting yard algorithm to parse expression
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct \mbox{\hyperlink{structparse__ast__res}{parse\+\_\+ast\+\_\+res}} -\/ status code and parsed \mbox{\hyperlink{structAST}{A\+ST}} if success 
+\end{DoxyReturn}

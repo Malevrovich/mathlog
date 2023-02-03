@@ -1,0 +1,74 @@
+\hypertarget{ast__debug_8h}{}\doxysection{src/ast/ast\+\_\+debug.h File Reference}
+\label{ast__debug_8h}\index{src/ast/ast\_debug.h@{src/ast/ast\_debug.h}}
+
+
+Functions to debug \mbox{\hyperlink{structAST}{A\+ST}}.  
+
+
+{\ttfamily \#include \char`\"{}ast.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+Include dependency graph for ast\+\_\+debug.\+h\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ast__debug_8h_a348f790c12c478b5e0da1ce6cb0b03a9}{print\+\_\+ast}} (F\+I\+LE $\ast$out, struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$node)
+\begin{DoxyCompactList}\small\item\em Recursively prints \mbox{\hyperlink{structAST}{A\+ST}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ast__debug_8h_ab796509f54faeda35ac2929559e962cc}{snprint\+\_\+ast}} (char $\ast$out, size\+\_\+t n, struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$node)
+\begin{DoxyCompactList}\small\item\em Recursively prints \mbox{\hyperlink{structAST}{A\+ST}} to string, but up to N symbols. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ast__debug_8h_a1f1bb692d2f23cde1f7633fb98fd6b5a}\label{ast__debug_8h_a1f1bb692d2f23cde1f7633fb98fd6b5a}} 
+const char $\ast$ \mbox{\hyperlink{ast__debug_8h_a1f1bb692d2f23cde1f7633fb98fd6b5a}{A\+S\+T\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+T\+R\+I\+NG}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em String representation of enum A\+S\+T\+\_\+type. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{ast__debug_8h_a25a6faff2ba0c074c9d636c6423562b2}\label{ast__debug_8h_a25a6faff2ba0c074c9d636c6423562b2}} 
+const char $\ast$ \mbox{\hyperlink{ast__debug_8h_a25a6faff2ba0c074c9d636c6423562b2}{B\+I\+N\+\_\+\+O\+P\+\_\+\+S\+T\+R\+I\+NG}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em String representation of enum binop\+\_\+type. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{ast__debug_8h_aa7ec19e0c668625e1ca6b62c1fa3bb71}\label{ast__debug_8h_aa7ec19e0c668625e1ca6b62c1fa3bb71}} 
+const char $\ast$ \mbox{\hyperlink{ast__debug_8h_aa7ec19e0c668625e1ca6b62c1fa3bb71}{U\+N\+\_\+\+O\+P\+\_\+\+S\+T\+R\+I\+NG}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em String representation of enum unop\+\_\+type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions to debug \mbox{\hyperlink{structAST}{A\+ST}}. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ast__debug_8h_a348f790c12c478b5e0da1ce6cb0b03a9}\label{ast__debug_8h_a348f790c12c478b5e0da1ce6cb0b03a9}} 
+\index{ast\_debug.h@{ast\_debug.h}!print\_ast@{print\_ast}}
+\index{print\_ast@{print\_ast}!ast\_debug.h@{ast\_debug.h}}
+\doxysubsubsection{\texorpdfstring{print\_ast()}{print\_ast()}}
+{\footnotesize\ttfamily void print\+\_\+ast (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{out,  }\item[{struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$}]{node }\end{DoxyParamCaption})}
+
+
+
+Recursively prints \mbox{\hyperlink{structAST}{A\+ST}}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em out} & File to write \\
+\hline
+\mbox{\texttt{ in}}  & {\em node} & Tree to print \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ast__debug_8h_ab796509f54faeda35ac2929559e962cc}\label{ast__debug_8h_ab796509f54faeda35ac2929559e962cc}} 
+\index{ast\_debug.h@{ast\_debug.h}!snprint\_ast@{snprint\_ast}}
+\index{snprint\_ast@{snprint\_ast}!ast\_debug.h@{ast\_debug.h}}
+\doxysubsubsection{\texorpdfstring{snprint\_ast()}{snprint\_ast()}}
+{\footnotesize\ttfamily void snprint\+\_\+ast (\begin{DoxyParamCaption}\item[{char $\ast$}]{out,  }\item[{size\+\_\+t}]{n,  }\item[{struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$}]{node }\end{DoxyParamCaption})}
+
+
+
+Recursively prints \mbox{\hyperlink{structAST}{A\+ST}} to string, but up to N symbols. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em out} & File to write \\
+\hline
+\mbox{\texttt{ in}}  & {\em n} & Maximum length \\
+\hline
+\mbox{\texttt{ in}}  & {\em node} & Tree to print \\
+\hline
+\end{DoxyParams}

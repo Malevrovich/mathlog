@@ -1,0 +1,44 @@
+\hypertarget{ast__index_8h}{}\doxysection{src/ast/ast\+\_\+index.h File Reference}
+\label{ast__index_8h}\index{src/ast/ast\_index.h@{src/ast/ast\_index.h}}
+
+
+Gives unique number for every variable in expression.  
+
+
+{\ttfamily \#include \char`\"{}ast.\+h\char`\"{}}\newline
+Include dependency graph for ast\+\_\+index.\+h\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{ast__index_8h_ad3f7dd1270b0d22c937eee653c82d790}{index}} (struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Gives unique number for every variable in expression. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gives unique number for every variable in expression. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ast__index_8h_ad3f7dd1270b0d22c937eee653c82d790}\label{ast__index_8h_ad3f7dd1270b0d22c937eee653c82d790}} 
+\index{ast\_index.h@{ast\_index.h}!index@{index}}
+\index{index@{index}!ast\_index.h@{ast\_index.h}}
+\doxysubsubsection{\texorpdfstring{index()}{index()}}
+{\footnotesize\ttfamily size\+\_\+t index (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Gives unique number for every variable in expression. 
+
+Recursively goes through the tree and mark every variable with number from 0 to N-\/1, ~\newline
+ where N is the number of variables
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em root} & Tree that will be indexed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+size\+\_\+t N -\/ Number of variables 
+\end{DoxyReturn}

@@ -1,0 +1,134 @@
+\hypertarget{ast_8h}{}\doxysection{src/ast/ast.h File Reference}
+\label{ast_8h}\index{src/ast/ast.h@{src/ast/ast.h}}
+
+
+Internal representation of logical formulas in form of Abstract Syntax Tree.  
+
+
+{\ttfamily \#include \char`\"{}tokenize.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+Include dependency graph for ast.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structAST}{A\+ST}}
+\begin{DoxyCompactList}\small\item\em Abstract Syntax Tree node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{ast_8h_a00b64ce290605a0b3a43ec3521cfb03f}\label{ast_8h_a00b64ce290605a0b3a43ec3521cfb03f}} 
+enum \mbox{\hyperlink{ast_8h_a00b64ce290605a0b3a43ec3521cfb03f}{A\+S\+T\+\_\+type}} \{ \newline
+{\bfseries A\+S\+T\+\_\+\+B\+I\+N\+A\+RY}, 
+{\bfseries A\+S\+T\+\_\+\+U\+N\+A\+RY}, 
+{\bfseries A\+S\+T\+\_\+\+L\+I\+T\+E\+R\+AL}, 
+{\bfseries A\+S\+T\+\_\+\+P\+A\+T\+T\+E\+RN}, 
+\newline
+{\bfseries A\+S\+T\+\_\+\+N\+O\+NE}
+ \}
+\begin{DoxyCompactList}\small\item\em Type of \mbox{\hyperlink{structAST}{A\+ST}} node. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{ast_8h_a4be9051125904933e79e2de7967db005}\label{ast_8h_a4be9051125904933e79e2de7967db005}} 
+enum \mbox{\hyperlink{ast_8h_a4be9051125904933e79e2de7967db005}{binop\+\_\+type}} \{ {\bfseries B\+I\+N\+\_\+\+A\+ND}, 
+{\bfseries B\+I\+N\+\_\+\+OR}, 
+{\bfseries B\+I\+N\+\_\+\+I\+M\+P\+L\+I\+C\+A\+T\+I\+ON}
+ \}
+\begin{DoxyCompactList}\small\item\em Type of A\+S\+T\+\_\+\+B\+I\+N\+A\+RY node. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{ast_8h_a1a9f142d0095c55983260490bb1197f3}\label{ast_8h_a1a9f142d0095c55983260490bb1197f3}} 
+enum \mbox{\hyperlink{ast_8h_a1a9f142d0095c55983260490bb1197f3}{unop\+\_\+type}} \{ {\bfseries U\+N\+\_\+\+N\+OT}
+ \}
+\begin{DoxyCompactList}\small\item\em Type of A\+S\+T\+\_\+\+U\+N\+A\+RY node. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{ast_8h_a347afac8ffb3bd69ac23dcbbaef6197f}\label{ast_8h_a347afac8ffb3bd69ac23dcbbaef6197f}} 
+enum \mbox{\hyperlink{ast_8h_a347afac8ffb3bd69ac23dcbbaef6197f}{lit\+\_\+type}} \{ {\bfseries L\+I\+T\+\_\+\+V\+AR}
+ \}
+\begin{DoxyCompactList}\small\item\em Type of A\+S\+T\+\_\+\+L\+I\+T\+E\+R\+AL node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ast_8h_ac910a117299a841f994dacd6be2b2698}{deep\+\_\+free\+\_\+ast}} (struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$node)
+\begin{DoxyCompactList}\small\item\em Free children and then node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ast_8h_a14edbbe93e933a2bdd1014a337e72d1a}{free\+\_\+ast}} (struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$$\ast$node)
+\begin{DoxyCompactList}\small\item\em Free children and then node, put N\+U\+LL by the node\textquotesingle{}s pointer. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$ \mbox{\hyperlink{ast_8h_aa008a672a42ec8c991c866cf4f0d7c64}{deep\+\_\+copy\+\_\+ast}} (struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$node)
+\begin{DoxyCompactList}\small\item\em Creates copy of node and it\textquotesingle{}s children. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{ast_8h_a9a0e28e20d382c853b97b74e2343b02e}{is\+\_\+ast\+\_\+equal}} (struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$lhs, struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$rhs)
+\begin{DoxyCompactList}\small\item\em Check if A\+S\+Ts are equal by value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Internal representation of logical formulas in form of Abstract Syntax Tree. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ast_8h_aa008a672a42ec8c991c866cf4f0d7c64}\label{ast_8h_aa008a672a42ec8c991c866cf4f0d7c64}} 
+\index{ast.h@{ast.h}!deep\_copy\_ast@{deep\_copy\_ast}}
+\index{deep\_copy\_ast@{deep\_copy\_ast}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{deep\_copy\_ast()}{deep\_copy\_ast()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structAST}{A\+ST}}$\ast$ deep\+\_\+copy\+\_\+ast (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$}]{node }\end{DoxyParamCaption})}
+
+
+
+Creates copy of node and it\textquotesingle{}s children. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em node} & Node to copy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct A\+S\+T$\ast$ copy 
+\end{DoxyReturn}
+\mbox{\Hypertarget{ast_8h_ac910a117299a841f994dacd6be2b2698}\label{ast_8h_ac910a117299a841f994dacd6be2b2698}} 
+\index{ast.h@{ast.h}!deep\_free\_ast@{deep\_free\_ast}}
+\index{deep\_free\_ast@{deep\_free\_ast}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{deep\_free\_ast()}{deep\_free\_ast()}}
+{\footnotesize\ttfamily void deep\+\_\+free\+\_\+ast (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$}]{node }\end{DoxyParamCaption})}
+
+
+
+Free children and then node. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em node} & Node to free \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ast_8h_a14edbbe93e933a2bdd1014a337e72d1a}\label{ast_8h_a14edbbe93e933a2bdd1014a337e72d1a}} 
+\index{ast.h@{ast.h}!free\_ast@{free\_ast}}
+\index{free\_ast@{free\_ast}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{free\_ast()}{free\_ast()}}
+{\footnotesize\ttfamily void free\+\_\+ast (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$$\ast$}]{node }\end{DoxyParamCaption})}
+
+
+
+Free children and then node, put N\+U\+LL by the node\textquotesingle{}s pointer. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em node} & Pointer to node to free \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{ast_8h_a9a0e28e20d382c853b97b74e2343b02e}\label{ast_8h_a9a0e28e20d382c853b97b74e2343b02e}} 
+\index{ast.h@{ast.h}!is\_ast\_equal@{is\_ast\_equal}}
+\index{is\_ast\_equal@{is\_ast\_equal}!ast.h@{ast.h}}
+\doxysubsubsection{\texorpdfstring{is\_ast\_equal()}{is\_ast\_equal()}}
+{\footnotesize\ttfamily bool is\+\_\+ast\+\_\+equal (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$}]{lhs,  }\item[{struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$}]{rhs }\end{DoxyParamCaption})}
+
+
+
+Check if A\+S\+Ts are equal by value. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em lhs} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em rhs} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true Trees are equal 
+
+false Trees are not equal 
+\end{DoxyReturn}

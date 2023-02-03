@@ -1,0 +1,47 @@
+\hypertarget{compute_8h}{}\doxysection{src/compute/compute.h File Reference}
+\label{compute_8h}\index{src/compute/compute.h@{src/compute/compute.h}}
+
+
+Process the logical formula with all of possible sets of values and return\textquotesingle{}s the result.  
+
+
+{\ttfamily \#include \char`\"{}ast.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for compute.\+h\+:
+% FIG 0
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcompute__res}{compute\+\_\+res}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcompute__res}{compute\+\_\+res}} \mbox{\hyperlink{compute_8h_abbfe27a34c789ff659b01f11eefc449a}{compute}} (struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Computes the logical formula with every possible set of values and count number of true and false results. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Process the logical formula with all of possible sets of values and return\textquotesingle{}s the result. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{compute_8h_abbfe27a34c789ff659b01f11eefc449a}\label{compute_8h_abbfe27a34c789ff659b01f11eefc449a}} 
+\index{compute.h@{compute.h}!compute@{compute}}
+\index{compute@{compute}!compute.h@{compute.h}}
+\doxysubsubsection{\texorpdfstring{compute()}{compute()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structcompute__res}{compute\+\_\+res}} compute (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structAST}{A\+ST}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Computes the logical formula with every possible set of values and count number of true and false results. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em root} & Logical formula to compute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct \mbox{\hyperlink{structcompute__res}{compute\+\_\+res}} count of true and false results 
+\end{DoxyReturn}

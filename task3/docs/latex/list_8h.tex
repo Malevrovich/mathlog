@@ -1,0 +1,105 @@
+\hypertarget{list_8h}{}\doxysection{src/list.h File Reference}
+\label{list_8h}\index{src/list.h@{src/list.h}}
+
+
+Set of macros that provide implementation of double linked list\textquotesingle{}s templates.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for list.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{list_8h_a19f5e3f1f205d661e65f03f19c4c4cff}\label{list_8h_a19f5e3f1f205d661e65f03f19c4c4cff}} 
+\#define {\bfseries \+\_\+\+D\+O\+U\+B\+L\+E\+\_\+\+L\+I\+N\+K\+E\+D\+\_\+\+L\+I\+S\+T\+\_\+\+H\+\_\+}
+\item 
+\#define \mbox{\hyperlink{list_8h_a3600101757b26035ec5c14a856ca9f1f}{D\+E\+C\+L\+A\+R\+E\+\_\+\+L\+I\+ST}}(name,  type)
+\begin{DoxyCompactList}\small\item\em Declares list\textquotesingle{}s node type. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{list_8h_ad55ce568ed3900e3d5b641a4c170f338}{D\+E\+F\+I\+N\+E\+\_\+\+R\+E\+A\+D\+\_\+\+L\+I\+ST}}(name,  type)
+\begin{DoxyCompactList}\small\item\em Defines read operation with specific list. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{list_8h_ac09851c6438e0d1f5a3ca52d6056956e}{D\+E\+F\+I\+N\+E\+\_\+\+L\+I\+ST}}(name,  type)
+\begin{DoxyCompactList}\small\item\em Defines write and read operations with specified list. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{list_8h_a9e3172745d53ca8bc7bfa4937f461fbf}{D\+E\+F\+I\+N\+E\+\_\+\+L\+I\+S\+T\+\_\+\+D\+E\+B\+UG}}(name,  type)
+\begin{DoxyCompactList}\small\item\em Defines debug operations with specified list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Set of macros that provide implementation of double linked list\textquotesingle{}s templates. 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{list_8h_a3600101757b26035ec5c14a856ca9f1f}\label{list_8h_a3600101757b26035ec5c14a856ca9f1f}} 
+\index{list.h@{list.h}!DECLARE\_LIST@{DECLARE\_LIST}}
+\index{DECLARE\_LIST@{DECLARE\_LIST}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{DECLARE\_LIST}{DECLARE\_LIST}}
+{\footnotesize\ttfamily \#define D\+E\+C\+L\+A\+R\+E\+\_\+\+L\+I\+ST(\begin{DoxyParamCaption}\item[{}]{name,  }\item[{}]{type }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct }list\_\#\#name \{                            \(\backslash\)}
+\DoxyCodeLine{    type val;                                   \(\backslash\)}
+\DoxyCodeLine{    struct list\_\#\#name *next;                   \(\backslash\)}
+\DoxyCodeLine{    struct list\_\#\#name *prev;                   \(\backslash\)}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Declares list\textquotesingle{}s node type. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em name} & String that will be placed instead of N\+A\+ME in declaration
+\begin{DoxyCode}{1}
+\DoxyCodeLine{\textcolor{keyword}{struct }list\_NAME \{\}; }
+\end{DoxyCode}
+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em type} & The type of value contained in declared list \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{list_8h_ac09851c6438e0d1f5a3ca52d6056956e}\label{list_8h_ac09851c6438e0d1f5a3ca52d6056956e}} 
+\index{list.h@{list.h}!DEFINE\_LIST@{DEFINE\_LIST}}
+\index{DEFINE\_LIST@{DEFINE\_LIST}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{DEFINE\_LIST}{DEFINE\_LIST}}
+{\footnotesize\ttfamily \#define D\+E\+F\+I\+N\+E\+\_\+\+L\+I\+ST(\begin{DoxyParamCaption}\item[{}]{name,  }\item[{}]{type }\end{DoxyParamCaption})}
+
+
+
+Defines write and read operations with specified list. 
+
+Defines functions\+: list\+\_\+\+N\+A\+M\+E\+\_\+front, list\+\_\+\+N\+A\+M\+E\+\_\+back, list\+\_\+\+N\+A\+M\+E\+\_\+empty, list\+\_\+\+N\+A\+M\+E\+\_\+size, list\+\_\+\+N\+A\+M\+E\+\_\+head, list\+\_\+\+N\+A\+M\+E\+\_\+last, list\+\_\+\+N\+A\+M\+E\+\_\+indexof, list\+\_\+\+N\+A\+M\+E\+\_\+find, list\+\_\+\+N\+A\+M\+E\+\_\+create, list\+\_\+\+N\+A\+M\+E\+\_\+push\+\_\+back, list\+\_\+\+N\+A\+M\+E\+\_\+push\+\_\+front, list\+\_\+\+N\+A\+M\+E\+\_\+pop\+\_\+back, list\+\_\+\+N\+A\+M\+E\+\_\+pop\+\_\+front, list\+\_\+\+N\+A\+M\+E\+\_\+free, list\+\_\+\+N\+A\+M\+E\+\_\+deep\+\_\+free, list\+\_\+\+N\+A\+M\+E\+\_\+insert\+\_\+after, list\+\_\+\+N\+A\+M\+E\+\_\+remove, list\+\_\+\+N\+A\+M\+E\+\_\+map \mbox{\Hypertarget{list_8h_a9e3172745d53ca8bc7bfa4937f461fbf}\label{list_8h_a9e3172745d53ca8bc7bfa4937f461fbf}} 
+\index{list.h@{list.h}!DEFINE\_LIST\_DEBUG@{DEFINE\_LIST\_DEBUG}}
+\index{DEFINE\_LIST\_DEBUG@{DEFINE\_LIST\_DEBUG}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{DEFINE\_LIST\_DEBUG}{DEFINE\_LIST\_DEBUG}}
+{\footnotesize\ttfamily \#define D\+E\+F\+I\+N\+E\+\_\+\+L\+I\+S\+T\+\_\+\+D\+E\+B\+UG(\begin{DoxyParamCaption}\item[{}]{name,  }\item[{}]{type }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{typedef} void (name\#\#\_element\_printer) (type *);                                                  \(\backslash\)}
+\DoxyCodeLine{static \textcolor{keywordtype}{void} list\_\#\#name\#\#\_print(\textcolor{keyword}{struct} list\_\#\#name **list, name\#\#\_element\_printer p)\{            \(\backslash\)}
+\DoxyCodeLine{    list\_\#\#name\#\#\_map(list, p);                                                                  \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Defines debug operations with specified list. 
+
+Defines functions\+: list\+\_\+\+N\+A\+M\+E\+\_\+print \mbox{\Hypertarget{list_8h_ad55ce568ed3900e3d5b641a4c170f338}\label{list_8h_ad55ce568ed3900e3d5b641a4c170f338}} 
+\index{list.h@{list.h}!DEFINE\_READ\_LIST@{DEFINE\_READ\_LIST}}
+\index{DEFINE\_READ\_LIST@{DEFINE\_READ\_LIST}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{DEFINE\_READ\_LIST}{DEFINE\_READ\_LIST}}
+{\footnotesize\ttfamily \#define D\+E\+F\+I\+N\+E\+\_\+\+R\+E\+A\+D\+\_\+\+L\+I\+ST(\begin{DoxyParamCaption}\item[{}]{name,  }\item[{}]{type }\end{DoxyParamCaption})}
+
+
+
+Defines read operation with specific list. 
+
+Defines functions\+: list\+\_\+\+N\+A\+M\+E\+\_\+front, list\+\_\+\+N\+A\+M\+E\+\_\+back, list\+\_\+\+N\+A\+M\+E\+\_\+empty, list\+\_\+\+N\+A\+M\+E\+\_\+size, list\+\_\+\+N\+A\+M\+E\+\_\+head, list\+\_\+\+N\+A\+M\+E\+\_\+last, list\+\_\+\+N\+A\+M\+E\+\_\+indexof, list\+\_\+\+N\+A\+M\+E\+\_\+find 

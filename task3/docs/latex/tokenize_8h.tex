@@ -1,0 +1,50 @@
+\hypertarget{tokenize_8h}{}\doxysection{src/tokenize/tokenize.h File Reference}
+\label{tokenize_8h}\index{src/tokenize/tokenize.h@{src/tokenize/tokenize.h}}
+
+
+Provides tokenization.  
+
+
+{\ttfamily \#include \char`\"{}list.\+h\char`\"{}}\newline
+Include dependency graph for tokenize.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structtoken}{token}}
+\begin{DoxyCompactList}\small\item\em Atomic element of text\textquotesingle{}s internal representation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct list\+\_\+token $\ast$$\ast$ \mbox{\hyperlink{tokenize_8h_a50b7f6103c0e127dd157fb3e0c80171e}{tokenize}} (const char $\ast$const str)
+\begin{DoxyCompactList}\small\item\em Tokenize the input string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides tokenization. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{tokenize_8h_a50b7f6103c0e127dd157fb3e0c80171e}\label{tokenize_8h_a50b7f6103c0e127dd157fb3e0c80171e}} 
+\index{tokenize.h@{tokenize.h}!tokenize@{tokenize}}
+\index{tokenize@{tokenize}!tokenize.h@{tokenize.h}}
+\doxysubsubsection{\texorpdfstring{tokenize()}{tokenize()}}
+{\footnotesize\ttfamily struct list\+\_\+token$\ast$$\ast$ tokenize (\begin{DoxyParamCaption}\item[{const char $\ast$const}]{str }\end{DoxyParamCaption})}
+
+
+
+Tokenize the input string. 
+
+Convert the string to tokens
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em str} & String that will be tokenized \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct list\+\_\+token$\ast$$\ast$ -\/ list of tokens 
+\end{DoxyReturn}

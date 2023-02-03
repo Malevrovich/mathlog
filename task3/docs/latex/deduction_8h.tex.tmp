@@ -1,0 +1,60 @@
+\hypertarget{deduction_8h}{}\doxysection{src/deduction/deduction.h File Reference}
+\label{deduction_8h}\index{src/deduction/deduction.h@{src/deduction/deduction.h}}
+
+
+Proves the deduction theorem for a particular case.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+Include dependency graph for deduction.\+h\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{deduction_8h_a750db3932336cd4e05e5314d8248df4e}{process\+\_\+proof}} (F\+I\+LE $\ast$in, F\+I\+LE $\ast$out)
+\begin{DoxyCompactList}\small\item\em Generates the proof of h\+\_\+1, ..., h\+\_\+n $\vert$-\/ alpha-\/$>$beta based on proof of h\+\_\+1, ..., h\+\_\+n, alpha $\vert$-\/ beta in Hilbert system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Proves the deduction theorem for a particular case. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{deduction_8h_a750db3932336cd4e05e5314d8248df4e}\label{deduction_8h_a750db3932336cd4e05e5314d8248df4e}} 
+\index{deduction.h@{deduction.h}!process\_proof@{process\_proof}}
+\index{process\_proof@{process\_proof}!deduction.h@{deduction.h}}
+\doxysubsubsection{\texorpdfstring{process\_proof()}{process\_proof()}}
+{\footnotesize\ttfamily void process\+\_\+proof (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{in,  }\item[{F\+I\+LE $\ast$}]{out }\end{DoxyParamCaption})}
+
+
+
+Generates the proof of h\+\_\+1, ..., h\+\_\+n $\vert$-\/ alpha-\/$>$beta based on proof of h\+\_\+1, ..., h\+\_\+n, alpha $\vert$-\/ beta in Hilbert system. 
+
+Proves the deduction theorem for a particular case in Hilbert system. ~\newline
+Generates the proof of statement alpha-\/$>$beta in context of hypotheses h\+\_\+1, ..., h\+\_\+n. ~\newline
+Generated proof based on proof of statement beta in context of hypotheses h\+\_\+1, ..., h\+\_\+n, alpha. ~\newline
+Line by line goes through the input proof and checks the type of statement(let\textquotesingle{}s define this statement as S)\+: ~\newline
+If S is one of axioms, then it generates\+: ~\newline
+(1) S-\/$>$alpha-\/$>$S(as axiom\textquotesingle{}s schema) ~\newline
+(2) S(as axiom\textquotesingle{}s schema) ~\newline
+(3) alpha-\/$>$S (as modus ponens of (1) and (2)) ~\newline
+If S is alpha, then it generates\+: ~\newline
+(1) alpha-\/$>$(alpha-\/$>$alpha) (as axiom\textquotesingle{}s schema) ~\newline
+(2) (alpha-\/$>$(alpha-\/$>$alpha))-\/$>$(alpha-\/$>$(alpha-\/$>$alpha)-\/$>$alpha)-\/$>$(alpha-\/$>$alpha) (as axiom\textquotesingle{}s schema) ~\newline
+(3) (alpha-\/$>$(alpha-\/$>$alpha)-\/$>$alpha)-\/$>$(alpha-\/$>$alpha) (as modus ponens of (1) and (2)) ~\newline
+(4) alpha-\/$>$(alpha-\/$>$alpha)-\/$>$alpha (as axiom\textquotesingle{}s schema) ~\newline
+(5) alpha-\/$>$alpha (as modus ponens of (3) and (4)) ~\newline
+If S modus ponens of S\+\_\+1 and S\+\_\+1-\/$>$S. ~\newline
+Proof of alpha-\/$>$S\+\_\+1 and alpha-\/$>$S\+\_\+1-\/$>$S is already generated, so the function generates\+: ~\newline
+(1) (alpha-\/$>$S\+\_\+1)-\/$>$(alpha-\/$>$S\+\_\+1-\/$>$S)-\/$>$(alpha-\/$>$S) (as axiom\textquotesingle{}s schema) ~\newline
+(2) (alpha-\/$>$S\+\_\+1-\/$>$S)-\/$>$(alpha-\/$>$S) (as modus ponens of (alpha-\/$>$S\+\_\+1) and (1)) ~\newline
+(3) alpha-\/$>$S (as modus ponens of (alpha-\/$>$S\+\_\+1-\/$>$S) and (2))
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em in} & Input file, that contains h\+\_\+1, ..., h\+\_\+n, alpha $\vert$-\/ beta proof \\
+\hline
+\mbox{\texttt{ out}}  & {\em out} & Output file, that will contain h\+\_\+1, ..., h\+\_\+n $\vert$-\/ alpha-\/$>$beta proof \\
+\hline
+\end{DoxyParams}
